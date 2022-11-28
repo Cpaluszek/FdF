@@ -9,7 +9,10 @@ INC			:=	fdf.h
 INC_DIR		:=	inc/
 
 SRC_DIR		:=	src/
-SRC			:=	main.c
+SRC			:=	main.c \
+				parse_map.c \
+				fdf_errors.c \
+				fdf_utils.c
 
 LIBFT_A		:=	libft.a
 LIBFT_DIR	:=	libft/
@@ -21,6 +24,7 @@ OBJ			:=	$(SRC:%.c=$(OBJ_DIR)%.o)
 # Compiler options
 CC			:=	cc
 CC_FLAGS	:=	-Wextra -Werror -Wall
+DEBUG_FLAG	:=	-ggdb3
 
 # define standard colors
 _END		:=	\x1b[0m
@@ -43,7 +47,7 @@ _WHITE		:=	\x1b[37m
 all: build_lib $(NAME)
 
 $(NAME): build_lib $(OBJ)
-	@$(CC) $(CC_FLAGS) $(OBJ) $(LIBFT_DIR)$(LIBFT_A) -o $@ 
+	@$(CC) $(CC_FLAGS) $(DEBUG_FLAG) $(OBJ) $(LIBFT_DIR)$(LIBFT_A) -o $@ 
 	@echo "> FdF Done!\n"
 
 build_lib: $(LIBFT_DIR)
@@ -52,7 +56,7 @@ build_lib: $(LIBFT_DIR)
 $(OBJ): $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(LIBFT_DIR) $(INC_DIR) Makefile
 	@mkdir -p $(@D)
 	@echo "$(_GREEN)compiling: $<$(_END)"
-	@$(CC) $(CC_FLAGS) -I$(INC_DIR) -I$(LIBFT_INC) -c $< -o $@
+	@$(CC) $(CC_FLAGS) $(DEBUG_FLAG) -I$(INC_DIR) -I$(LIBFT_INC) -c $< -o $@
 
 # clean commands
 clean:
