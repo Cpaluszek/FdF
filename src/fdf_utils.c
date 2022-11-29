@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:00:44 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/11/28 18:54:03 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/11/29 13:06:17 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,9 @@ void	ft_free_map(t_map *map)
 		free(map->grid);
 	}
 	free(map);
-	exit(-1);
 }
 
 void	free_map_file_content(void *content)
 {
-	free((char *) content);
+	free((char *)content);
 }

@@ -11,12 +11,17 @@ INC_DIR		:=	inc/
 SRC_DIR		:=	src/
 SRC			:=	main.c \
 				parse_map.c \
+				draw_wireframe.c \
 				fdf_errors.c \
-				fdf_utils.c
+				fdf_utils.c \
+				mlx_utils.c
 
 LIBFT_A		:=	libft.a
-LIBFT_DIR	:=	libft/
-LIBFT_INC	:= 	libft/inc/
+LIBFT_DIR	:=	lib/libft/
+LIBFT_INC	:= 	lib/libft/inc/
+
+MLX_DIR		:=	lib/minilibx_macos/
+MLX_A		:=	libmlx.a
 
 OBJ_DIR		:=	build/
 OBJ			:=	$(SRC:%.c=$(OBJ_DIR)%.o)
@@ -47,16 +52,18 @@ _WHITE		:=	\x1b[37m
 all: build_lib $(NAME)
 
 $(NAME): build_lib $(OBJ)
-	@$(CC) $(CC_FLAGS) $(DEBUG_FLAG) $(OBJ) $(LIBFT_DIR)$(LIBFT_A) -o $@ 
+	@$(CC) $(CC_FLAGS) $(DEBUG_FLAG) $(OBJ) $(LIBFT_DIR)$(LIBFT_A) $(MLX_DIR)$(MLX_A) -framework OpenGL -framework AppKit -o $@ 
 	@echo "> FdF Done!\n"
-
+	
+# TODO: separate libft and mlx
 build_lib: $(LIBFT_DIR)
 	@$(MAKE) -C $(LIBFT_DIR)
+	@$(MAKE) -C $(MLX_DIR)
 
-$(OBJ): $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(LIBFT_DIR) $(INC_DIR) Makefile
+$(OBJ): $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(LIBFT_DIR) $(INC_DIR)$(INC) Makefile
 	@mkdir -p $(@D)
 	@echo "$(_GREEN)compiling: $<$(_END)"
-	@$(CC) $(CC_FLAGS) $(DEBUG_FLAG) -I$(INC_DIR) -I$(LIBFT_INC) -c $< -o $@
+	@$(CC) $(CC_FLAGS) $(DEBUG_FLAG) -I$(INC_DIR) -I$(LIBFT_INC) -I$(MLX_DIR) -c $< -o $@
 
 # clean commands
 clean:
@@ -71,4 +78,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re build_lib

@@ -6,13 +6,13 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:58:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/11/28 18:43:27 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/11/29 11:21:17 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 // Todo: manage error codes (return -1 everytime something is wrong ?)
-
+// TODO; if cant read from file
 /* Print error message and interrupt program
 	- 0 -> no arguments
 	- 1 -> file not found
@@ -29,6 +29,6 @@ void	manage_errors(int err_no, char *text)
 	else if (err_no == 2)
 		ft_printf_fd(STDERR_FILENO, "Unable to close file %s\n", text);
 	else if (err_no == 3)
-		ft_printf_fd(STDERR_FILENO, "Allocation error\n");
+		ft_printf_fd(STDERR_FILENO, "Allocation error: %s\n", text);
 	exit(-1);
 }
