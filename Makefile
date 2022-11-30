@@ -16,12 +16,12 @@ SRC			:=	main.c \
 				fdf_utils.c \
 				mlx_utils.c
 
-LIBFT_A		:=	libft.a
+LIBFT_A		:=	lib/libft/libft.a
 LIBFT_DIR	:=	lib/libft/
 LIBFT_INC	:= 	lib/libft/inc/
 
 MLX_DIR		:=	lib/minilibx_macos/
-MLX_A		:=	libmlx.a
+MLX_A		:=	lib/minilibx_macos/libmlx.a
 
 OBJ_DIR		:=	build/
 OBJ			:=	$(SRC:%.c=$(OBJ_DIR)%.o)
@@ -49,18 +49,22 @@ _WHITE		:=	\x1b[37m
 # 		RULES			#
 #########################
 
-all: build_lib $(NAME)
+all: build_libft $(NAME)
 
-$(NAME): build_lib $(OBJ)
-	@$(CC) $(CC_FLAGS) $(DEBUG_FLAG) $(OBJ) $(LIBFT_DIR)$(LIBFT_A) $(MLX_DIR)$(MLX_A) -framework OpenGL -framework AppKit -o $@ 
+$(NAME): $(OBJ) $(LIBFT_A) $(MLX_A) 
+	@$(CC) $(CC_FLAGS) $(DEBUG_FLAG) $(OBJ) $(LIBFT_A) $(MLX_A) -lm -framework OpenGL -framework AppKit -o $@ 
 	@echo "> FdF Done!\n"
 	
-# TODO: separate libft and mlx
-build_lib: $(LIBFT_DIR)
+# Libft Makefile
+build_libft:
 	@$(MAKE) -C $(LIBFT_DIR)
-	@$(MAKE) -C $(MLX_DIR)
 
-$(OBJ): $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(LIBFT_DIR) $(INC_DIR)$(INC) Makefile
+# MinilibX makefile
+$(MLX_A): $(MLX_DIR)
+	@$(MAKE) -C $(MLX_DIR)
+	@echo "> MLX Done!\n"
+
+$(OBJ): $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(LIBFT_DIR) $(INC_DIR)$(INC)
 	@mkdir -p $(@D)
 	@echo "$(_GREEN)compiling: $<$(_END)"
 	@$(CC) $(CC_FLAGS) $(DEBUG_FLAG) -I$(INC_DIR) -I$(LIBFT_INC) -I$(MLX_DIR) -c $< -o $@
@@ -68,14 +72,13 @@ $(OBJ): $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(LIBFT_DIR) $(INC_DIR)$(INC) Makefile
 # clean commands
 clean:
 	@$(MAKE) clean -C $(LIBFT_DIR)
-	@rm -rf $(OBJS_DIR)
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
 	@echo "remove $(NAME)"
 	@rm -rf $(NAME)
-	@echo "remove $(LIBFT_DIR)$(LIBFT_A)"
-	@rm -rf "$(LIBFT_DIR)$(LIBFT_A)"
+	@$(MAKE) fclean -C $(LIBFT_DIR)
 
 re: fclean all
 
-.PHONY: all clean fclean re build_lib
+.PHONY: all clean fclean re build_libft

@@ -6,13 +6,12 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:58:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/11/29 11:21:17 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/11/30 10:18:41 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 // Todo: manage error codes (return -1 everytime something is wrong ?)
-// TODO; if cant read from file
 /* Print error message and interrupt program
 	- 0 -> no arguments
 	- 1 -> file not found

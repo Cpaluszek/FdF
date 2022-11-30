@@ -6,13 +6,12 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:00:44 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/11/29 13:06:17 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/11/30 17:00:06 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-//TODO: remove debug functions
 void	ft_print_map(t_map *map)
 {
 	int	i;
@@ -23,10 +22,7 @@ void	ft_print_map(t_map *map)
 	{
 		j = 0;
 		while (j < map->width)
-		{
-			ft_printf("%d ", map->grid[i][j]);
-			j++;
-		}
+			ft_printf("%d ", map->grid[i][j++]);
 		ft_printf("\n");
 		i++;
 	}
@@ -41,10 +37,7 @@ void	ft_free_map(t_map *map)
 	if (map->grid)
 	{
 		while (i < map->height)
-		{
-			free(map->grid[i]);
-			i++;
-		}
+			free(map->grid[i++]);
 		free(map->grid);
 	}
 	free(map);
@@ -53,4 +46,18 @@ void	ft_free_map(t_map *map)
 void	free_map_file_content(void *content)
 {
 	free((char *)content);
+}
+
+int	min(int a, int b)
+{
+	if (a < b)
+		return (a);
+	return (b);
+}
+
+int	max(int a, int b)
+{
+	if (a > b)
+		return (a);
+	return (b);
 }

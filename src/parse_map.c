@@ -6,26 +6,40 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:55:07 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/11/29 13:13:22 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/11/30 16:56:30 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+// Parse file content into map structure
 void	ft_parse_map(char *path, t_map *map)
 {
 	t_list	*map_file;
-	char	*line;
-	int		i;
 	int		fd;
 
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		manage_errors(1, path);
 	ft_read_map_file(fd, &map_file);
-	map->height = ft_lstsize(map_file);
-	map->width = 0;
+	ft_init_map(map, map_file, ft_lstsize(map_file));
+	ft_populate_grid(map, map_file, -1);
+	ft_lstclear(&map_file, &free_map_file_content);
+	if (close(fd) == -1)
+		manage_errors(2, path);
+}
+
+// Init map variables
+void	ft_init_map(t_map *map, t_list *map_file, int height)
+{
+	char	*line;
+	int		i;
+
 	i = -1;
+	map->height = height;
+	map->width = 0;
+	map->max_depth = INT_MAX;
+	map->min_depth = INT_MIN;
 	line = (char *) map_file->content;
 	while (line[++i])
 		if (line[i] == ' ')
@@ -36,9 +50,6 @@ void	ft_parse_map(char *path, t_map *map)
 		ft_free_map(map);
 		manage_errors(3, "map->grid");
 	}
-	ft_populate_grid(map, map_file, -1);
-	if (close(fd) == -1)
-		manage_errors(2, path);
 }
 
 // NOTE: addback is not optimal
@@ -87,11 +98,19 @@ void	ft_populate_grid(t_map *map, t_list *map_file, int i)
 		while (++j < map->width)
 		{
 			map->grid[i][j] = ft_atoi(line);
+			ft_check_extremums(map, map->grid[i][j]);
 			while (*line && *line != ' ')
 				line++;
 			line++;
 		}
 		map_file = map_file->next;
 	}
-	ft_lstclear(&head, &free_map_file_content);
+}
+
+void	ft_check_extremums(t_map *map, int depth)
+{
+	if (depth > map->max_depth)
+		map->max_depth = depth;
+	if (depth < map->min_depth)
+		map->min_depth = depth;
 }
