@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:51:30 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/04 11:47:06 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/04 11:50:12 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	draw_wireframe(t_fdf *fdf)
 
 // Bresenham line generation
 // 	- line is drawn from left to right
+// Todo: color gradient
 void	draw_line(t_fdf *fdf, t_vector p1, t_vector p2)
 {
 	float	dx;
@@ -56,7 +57,6 @@ void	draw_line(t_fdf *fdf, t_vector p1, t_vector p2)
 	// To avoid line drawing starting out of bounds
 	z1 = fdf->map->grid[(int)p1.y][(int)p1.x];
 	z2 = fdf->map->grid[(int)p2.y][(int)p2.x];
-	
 	//--------center-------
 	p1.x -= fdf->map->width / 2;
 	p1.y -= fdf->map->height / 2;
@@ -99,7 +99,7 @@ void	isometric_projection(t_fdf *fdf, t_vector *p, int z)
 {
 	p->x = cos(deg_to_rad(fdf->map->angle)) * (p->x - p->y);
 	p->y = sin(deg_to_rad(fdf->map->angle)) * (p->x + p->y) \
-		- z * fdf->map->height_mult;
+		- (z * fdf->map->height_mult * fdf->map->zoom / 50);
 }
 
 int	check_bounds(const t_vector p)

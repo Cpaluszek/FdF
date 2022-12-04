@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:28:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/04 11:44:03 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/04 11:53:39 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,15 @@ int	button_hooks(t_fdf *mlx)
 
 //TODO: move in correct file
 	// Todo: set zoom depending on number of points
+// Todo: define initial values
 void	set_default_map_parameters(t_map *map)
 {
 	map->max_depth = INT_MAX;
 	map->min_depth = INT_MIN;
-	map->angle = 45;
-	map->zoom = 50;
+	map->angle = INITIAL_ANGLE;
+	map->zoom = INITIAL_ZOOM;
 	map->shift_x = WIN_WIDTH / 2;
 	map->shift_y = WIN_HEIGHT / 2;
-	map->height_mult = 2;
+	map->height_mult = INITIAL_HEIGHT_MULT;
 	map->color = WHITE;
 }

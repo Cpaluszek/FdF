@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/04 11:46:28 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/04 11:53:31 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 # include "libft.h"
 # include "mlx_utils.h"
 # include <fcntl.h>
+
+# define INITIAL_ZOOM			50
+# define INITIAL_ANGLE			45
+# define INITIAL_HEIGHT_MULT	2
 
 typedef struct s_vector
 {
