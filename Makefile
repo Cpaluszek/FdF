@@ -85,4 +85,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re build_libft echo
+.PHONY: all clean fclean re build_libft
