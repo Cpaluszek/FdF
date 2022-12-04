@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:55:07 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/04 14:54:49 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/04 15:06:12 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	ft_parse_map(char *path, t_map *map)
 		manage_errors(1, path);
 	ft_read_map_file(fd, &map_file);
 	ft_init_map(map, map_file, ft_lstsize(map_file));
+	set_default_map_parameters(map);
 	ft_populate_grid(map, map_file, -1);
 	ft_lstclear(&map_file, &free);
 	if (close(fd) == -1)
@@ -38,7 +39,6 @@ void	ft_init_map(t_map *map, t_list *map_file, int height)
 	i = 0;
 	map->height = height;
 	map->width = 0;
-	set_default_map_parameters(map);
 	line = (char *) map_file->content;
 	while (line[i] && line[i] != '\n')
 	{

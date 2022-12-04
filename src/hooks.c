@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:47:10 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/04 14:47:38 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/04 15:00:14 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ int	button_hooks(t_fdf *mlx)
 	return (0);
 }
 
+// Todo: on mouse scroll zoom and center bellow cursor
 int	mouse_hooks(int key, int x, int y, t_fdf *fdf)
 {
 	(void) x;
