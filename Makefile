@@ -24,9 +24,6 @@ LIBFT_A		:=	lib/libft/libft.a
 LIBFT_DIR	:=	lib/libft/
 LIBFT_INC	:= 	lib/libft/inc/
 
-MLX_DIR		:=	lib/minilibx_macos/
-MLX_A		:=	lib/minilibx_macos/libmlx.a
-
 OBJ_DIR		:=	build/
 OBJ			:=	$(SRC:%.c=$(OBJ_DIR)%.o)
 
@@ -49,6 +46,23 @@ _PURPLE		:=	\x1b[35m
 _CYAN		:=	\x1b[36m
 _WHITE		:=	\x1b[37m
 
+
+
+#########################
+# 	CROSS_PLATFORM		#
+#########################
+
+UNAME_S		:= $(shell uname -s)
+	ifeq ($(UNAME_S),Linux)
+		MLX_FLAG = -lm -L/usr/lib -lXext -lX11 -lz
+		MLX_DIR	=	lib/minilibx-linux/
+		MLX_A	=	lib/minilibx-linux/libmlx.a
+	endif
+	ifeq ($(UNAME_S),Darwin)
+		MLX_DIR	=	lib/minilibx_macos/
+		MLX_A	=	lib/minilibx_macos/libmlx.a
+		MLX_FLAG = -lm -framework OpenGL -framework AppKit
+	endif
 #########################
 # 		RULES			#
 #########################
@@ -56,7 +70,7 @@ _WHITE		:=	\x1b[37m
 all: build_libft $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT_A) $(MLX_A) 
-	@$(CC) $(CC_FLAGS) $(DEBUG_FLAG) $(OBJ) $(LIBFT_A) $(MLX_A) -lm -framework OpenGL -framework AppKit -o $@ 
+	@$(CC) $(CC_FLAGS) $(DEBUG_FLAG) $(OBJ) $(LIBFT_A) $(MLX_A) $(MLX_FLAG) -o $@ 
 	@echo "> FdF Done!\n"
 	
 # Libft Makefile

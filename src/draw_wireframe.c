@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:51:30 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/04 14:53:58 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/04 17:30:49 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,11 @@ void	draw_wireframe(t_fdf *fdf)
 {
 	int	i;
 	int	j;
-	int	dx;
-	int	dy;
 
 	i = 0;
 	fdf->data.img = mlx_new_image(fdf->mlx, WIN_WIDTH, WIN_HEIGHT);
 	fdf->data.addr = mlx_get_data_addr(fdf->data.img, \
 		&fdf->data.bits_per_pixel, &fdf->data.line_length, &fdf->data.endian);
-	dx = WIN_WIDTH / (fdf->map->width + 1);
-	dy = WIN_HEIGHT / (fdf->map->height + 1);
 	while (i < fdf->map->height)
 	{
 		j = 0;
