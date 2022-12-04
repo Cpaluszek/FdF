@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:10:47 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/03 15:47:06 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/04 11:20:38 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,19 @@
 
 # include "mlx.h"
 
+# define WIN_HEIGHT	1200
+# define WIN_WIDTH	1600
+# define WIN_NAME	"fdf"
+
+/*	Colors	*/
+# define WHITE	0x00FFFFFF
+# define RED	0x00FF0000
+
+
+// SCROLL_DOWN = 4,
+// SCROLL_UP = 5,
 enum	e_keycodes
 {
-	// SCROLL_DOWN = 4,
-	// SCROLL_UP = 5,
 	NUM_PLUS = 69,
 	NUM_DOWN = 78,
 	SPACE = 49,

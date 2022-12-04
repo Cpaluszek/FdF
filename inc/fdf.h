@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/03 15:39:50 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/04 11:20:46 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 # include "libft.h"
 # include "mlx_utils.h"
 # include <fcntl.h>
-# define WIN_HEIGHT 1000
-# define WIN_WIDTH 1200
-# define WIN_NAME "fdf"
-# define WHITE 0x00FFFFFF
-# define RED 0x00FF0000
 
 typedef struct s_vector
 {
