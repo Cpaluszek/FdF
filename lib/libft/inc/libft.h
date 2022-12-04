@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:23:15 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/11/27 12:13:58 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/04 09:22:32 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <limits.h>
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 32
-# endif
 # define NULL_STR "(null)"
 # define HEX_BASE_LOWER "0123456789abcdef"
 # define HEX_BASE_UPPER "0123456789ABCDEF"

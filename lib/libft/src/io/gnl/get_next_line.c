@@ -6,11 +6,14 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:39:24 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/11/26 16:01:37 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/04 09:21:54 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#ifndef BUFFER_SIZE
+# define BUFFER_SIZE 256
+#endif
 
 static char	*read_file(int fd, char *buffer, size_t i);
 static char	*ft_join_to_buffer(char *buffer, char *read);
