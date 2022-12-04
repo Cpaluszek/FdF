@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:28:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/03 15:46:25 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/04 11:37:40 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	setup_mlx_hooks(t_fdf *fdf)
 
 //TODO: remove printf on keys
 //TODO: set max and min for angle and height mult
+// NOTE: define increments in header
 int	keyboard_hooks(int key, t_fdf *fdf)
 {
 	if (key == ESC)
@@ -46,9 +47,9 @@ int	keyboard_hooks(int key, t_fdf *fdf)
 	else if (key == ARROW_RIGHT)
 		fdf->map->angle++;
 	else if (key == NUM_PLUS)
-		fdf->map->zoom++;
+		fdf->map->zoom += .3f;
 	else if (key == NUM_DOWN)
-		fdf->map->zoom--;
+		fdf->map->zoom -= .3f;
 	else
 		ft_printf("key = %d\n", key);
 	draw_wireframe(fdf);
@@ -82,6 +83,8 @@ void	set_default_map_parameters(t_map *map)
 	map->min_depth = INT_MIN;
 	map->angle = 45;
 	map->zoom = 50;
+	map->shift_x = WIN_WIDTH / 2;
+	map->shift_y = WIN_HEIGHT / 2;
 	map->height_mult = 2;
 	map->color = WHITE;
 }

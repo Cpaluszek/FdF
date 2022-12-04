@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:51:30 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/04 11:18:24 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/04 11:38:11 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,12 @@ void	draw_line(t_fdf *fdf, t_vector p1, t_vector p2)
 	// To avoid line drawing starting out of bounds
 	z1 = fdf->map->grid[(int)p1.y][(int)p1.x];
 	z2 = fdf->map->grid[(int)p2.y][(int)p2.x];
+	
+	//--------center-------
+	p1.x -= fdf->map->width / 2;
+	p1.y -= fdf->map->height / 2;
+	p2.x -= fdf->map->width / 2;
+	p2.y -= fdf->map->height / 2;
 	//--------zoom--------
 	p1.x *= fdf->map->zoom;
 	p1.y *= fdf->map->zoom;
@@ -71,10 +77,10 @@ void	draw_line(t_fdf *fdf, t_vector p1, t_vector p2)
 	isometric_projection(fdf, &p1, z1);
 	isometric_projection(fdf, &p2, z2);
 	//-------shift---------
-	p1.x += WIN_WIDTH / 3;
-	p1.y += WIN_HEIGHT / 3;
-	p2.x += WIN_WIDTH / 3;
-	p2.y += WIN_HEIGHT / 3;
+	p1.x += fdf->map->shift_x;
+	p1.y += fdf->map->shift_y;
+	p2.x += fdf->map->shift_x;
+	p2.y += fdf->map->shift_y;
 	dx = p2.x - p1.x;
 	dy = p2.y - p1.y;
 	max = fmax(fabs(dx), fabs(dy));
@@ -85,8 +91,6 @@ void	draw_line(t_fdf *fdf, t_vector p1, t_vector p2)
 		my_mlx_pixel_put(&fdf->data, p1.x, p1.y, fdf->map->color);
 		p1.x += dx;
 		p1.y += dy;
-		if (p1.x > WIN_WIDTH || p1.y > WIN_HEIGHT || p1.x < 0 || p1.y < 0)
-			break ;
 	}
 }
 
