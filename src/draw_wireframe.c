@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:51:30 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/04 11:38:11 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/04 11:47:06 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	draw_wireframe(t_fdf *fdf)
 
 	i = 0;
 	fdf->data.img = mlx_new_image(fdf->mlx, WIN_WIDTH, WIN_HEIGHT);
-	fdf->data.addr = mlx_get_data_addr(fdf->data.img, &fdf->data.bits_per_pixel,\
-		&fdf->data.line_length, &fdf->data.endian);
+	fdf->data.addr = mlx_get_data_addr(fdf->data.img, \
+		&fdf->data.bits_per_pixel, &fdf->data.line_length, &fdf->data.endian);
 	dx = WIN_WIDTH / (fdf->map->width + 1);
 	dy = WIN_HEIGHT / (fdf->map->height + 1);
 	while (i < fdf->map->height)
@@ -44,7 +44,6 @@ void	draw_wireframe(t_fdf *fdf)
 
 // Bresenham line generation
 // 	- line is drawn from left to right
-// Todo: set horigin offset to map->size / 2
 void	draw_line(t_fdf *fdf, t_vector p1, t_vector p2)
 {
 	float	dx;
@@ -86,7 +85,7 @@ void	draw_line(t_fdf *fdf, t_vector p1, t_vector p2)
 	max = fmax(fabs(dx), fabs(dy));
 	dx /= max;
 	dy /= max;
-	while (check_window_bounds(p1.x, p1.y) && ((int)(p1.x - p2.x) || (int)(p1.y - p2.y)))
+	while (check_bounds(p1) && ((int)(p1.x - p2.x) || (int)(p1.y - p2.y)))
 	{
 		my_mlx_pixel_put(&fdf->data, p1.x, p1.y, fdf->map->color);
 		p1.x += dx;
@@ -99,10 +98,11 @@ void	draw_line(t_fdf *fdf, t_vector p1, t_vector p2)
 void	isometric_projection(t_fdf *fdf, t_vector *p, int z)
 {
 	p->x = cos(deg_to_rad(fdf->map->angle)) * (p->x - p->y);
-	p->y = sin(deg_to_rad(fdf->map->angle)) * (p->x + p->y) - z * fdf->map->height_mult;
+	p->y = sin(deg_to_rad(fdf->map->angle)) * (p->x + p->y) \
+		- z * fdf->map->height_mult;
 }
 
-int	check_window_bounds(float x, float y)
+int	check_bounds(const t_vector p)
 {
-	return (!(x >= WIN_WIDTH || y >= WIN_HEIGHT || x <= 0 || y <= 0));
+	return (!(p.x >= WIN_WIDTH || p.y >= WIN_HEIGHT || p.x <= 0 || p.y <= 0));
 }

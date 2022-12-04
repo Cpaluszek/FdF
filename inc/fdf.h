@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/04 11:36:04 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/04 11:46:28 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	set_default_map_parameters(t_map *map);
 void	draw_wireframe(t_fdf *mlx);
 void	draw_line(t_fdf *mlx, t_vector p1, t_vector p2);
 void	isometric_projection(t_fdf *mlx, t_vector *p, int z);
-int		check_window_bounds(float x, float y);
+int		check_bounds(const t_vector p);
 
 /*	Errors	*/
 void	manage_errors(int err_no, char *text);

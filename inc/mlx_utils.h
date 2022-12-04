@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:10:47 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/04 11:20:38 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/04 11:43:05 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 /*	Colors	*/
 # define WHITE	0x00FFFFFF
 # define RED	0x00FF0000
-
 
 // SCROLL_DOWN = 4,
 // SCROLL_UP = 5,

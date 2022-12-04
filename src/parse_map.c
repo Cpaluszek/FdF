@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:55:07 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/03 15:33:20 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/04 11:43:48 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,6 @@ void	ft_populate_grid(t_map *map, t_list *map_file, int i)
 	int		j;
 	char	*line;
 
-	ft_printf("--------------- PARSE ---------------\n");
-	ft_printf("\t| map H=%d - W=%d |\n\n", map->height, map->width);
 	while (++i < map->height)
 	{
 		map->grid[i] = malloc(sizeof(int) * map->width);

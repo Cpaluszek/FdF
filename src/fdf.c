@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:51 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/04 10:44:40 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/04 11:43:17 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ int	main(int argc, char **argv)
 	ft_parse_map(argv[1], fdf.map);
 	fdf.mlx = mlx_init();
 	fdf.win = mlx_new_window(fdf.mlx, WIN_WIDTH, WIN_HEIGHT, WIN_NAME);
-	// ft_print_map(fdf.map);
 	setup_mlx_hooks(&fdf);
 	draw_wireframe(&fdf);
 	mlx_loop(fdf.mlx);
 	return (0);
 }
+	// ft_print_map(fdf.map);
 
 // NOTE: mlx_loop_hook ?
 /*	//TODO: Setup MLX hooks

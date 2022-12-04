@@ -22,6 +22,7 @@ Todo:
     ☐ update struct depending on reference
     ☐ manage errors -> return specific error codes
     ☐ check `perror` and `strerror`
+    ☐ Look for const parameters
  
   Optimize:
     ☐ Check for execution time
@@ -37,4 +38,5 @@ Final Tests:
   ☐ Random map parsing
   ☐ Remove debug functions
     ☐ `ft_print_map`
+  ☐ Remove all comments
 

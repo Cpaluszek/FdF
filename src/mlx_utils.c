@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:28:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/04 11:37:40 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/04 11:44:03 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	setup_mlx_hooks(t_fdf *fdf)
 {
 	mlx_hook(fdf->win, ON_KEYDOWN, 1L << 0, keyboard_hooks, fdf);
 	mlx_hook(fdf->win, ON_BUTTON_PRESS, 1L << 0, button_hooks, fdf);
-	// mlx_mouse_hook(fdf->win, mouse_hooks, fdf);
 }
+	// mlx_mouse_hook(fdf->win, mouse_hooks, fdf);
 
 //TODO: remove printf on keys
 //TODO: set max and min for angle and height mult
