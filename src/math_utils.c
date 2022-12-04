@@ -5,12 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/01 18:11:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/01 18:12:18 by cpalusze         ###   ########.fr       */
+/*   Created: 2022/12/04 14:50:53 by cpalusze          #+#    #+#             */
+/*   Updated: 2022/12/04 14:51:02 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "fdf.h"
 
 int	min(int a, int b)
 {

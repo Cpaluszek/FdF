@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:55:07 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/04 11:43:48 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/04 14:54:49 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,12 +107,4 @@ void	ft_populate_grid(t_map *map, t_list *map_file, int i)
 		}
 		map_file = map_file->next;
 	}
-}
-
-void	ft_check_extremums(t_map *map, int depth)
-{
-	if (depth > map->max_depth)
-		map->max_depth = depth;
-	if (depth < map->min_depth)
-		map->min_depth = depth;
 }

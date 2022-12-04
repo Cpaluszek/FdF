@@ -17,6 +17,7 @@ SRC			:=	fdf.c \
 				fdf_errors.c \
 				fdf_utils.c \
 				mlx_utils.c \
+				hooks.c \
 				math_utils.c
 
 LIBFT_A		:=	lib/libft/libft.a
