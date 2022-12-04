@@ -32,7 +32,7 @@ OBJ			:=	$(SRC:%.c=$(OBJ_DIR)%.o)
 # Compiler options
 CC			:=	cc
 CC_FLAGS	:=	-Wextra -Werror -Wall
-DEBUG_FLAG	:=	-ggdb3
+DEBUG_FLAG	:=	-ggdb3 -fsanitize=address
 
 # define standard colors
 _END		:=	\x1b[0m

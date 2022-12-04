@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:10:47 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/04 11:43:05 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/04 14:41:47 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 # define WHITE	0x00FFFFFF
 # define RED	0x00FF0000
 
-// SCROLL_DOWN = 4,
-// SCROLL_UP = 5,
 enum	e_keycodes
 {
+	SCROLL_DOWN = 4,
+	SCROLL_UP = 5,
 	NUM_PLUS = 69,
 	NUM_DOWN = 78,
 	SPACE = 49,
@@ -34,7 +34,13 @@ enum	e_keycodes
 	ARROW_UP = 126,
 	ARROW_DOWN = 125,
 	ARROW_LEFT = 124,
-	ARROW_RIGHT = 123
+	ARROW_RIGHT = 123,
+	KEY_Q = 12,
+	KEY_W = 13,
+	KEY_E = 14,
+	KEY_A = 0,
+	KEY_S = 1,
+	KEY_D = 2
 };
 
 enum	e_mlx_events

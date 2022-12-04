@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/04 11:53:31 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/04 14:37:33 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	manage_errors(int err_no, char *text);
 void	setup_mlx_hooks(t_fdf *mlx);
 int		keyboard_hooks(int key, t_fdf *mlx);
 int		button_hooks(t_fdf *mlx);
-int		mouse_hooks(int key, t_fdf *fdf);
+int		mouse_hooks(int key, int x, int y, t_fdf *fdf);
 
 /*	Utils	*/
 void	ft_free_map(t_map *map);
