@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   math_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 16:56:39 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/11/10 10:28:46 by cpalusze         ###   ########.fr       */
+/*   Created: 2022/12/01 18:11:33 by cpalusze          #+#    #+#             */
+/*   Updated: 2022/12/01 18:12:18 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 
-int	ft_memcmp(const void *s1, const void *s2, size_t n)
+int	min(int a, int b)
 {
-	size_t			i;
-	unsigned char	*ps1;
-	unsigned char	*ps2;
+	if (a < b)
+		return (a);
+	return (b);
+}
 
-	i = 0;
-	ps1 = (unsigned char *) s1;
-	ps2 = (unsigned char *) s2;
-	if (n == 0)
-		return (0);
-	while (i < n)
-	{
-		if (ps1[i] != ps2[i])
-			return ((int)(ps1[i] - ps2[i]));
-		i++;
-	}
-	return (0);
+int	max(int a, int b)
+{
+	if (a > b)
+		return (a);
+	return (b);
+}
+
+double	deg_to_rad(int angle)
+{
+	return (angle * 3.14159265F / 180.0F);
 }

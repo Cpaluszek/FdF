@@ -5,16 +5,19 @@
 # Folders and names
 NAME		:=	fdf
 
-INC			:=	fdf.h
+INC			:=	fdf.h mlx_utils.h
 INC_DIR		:=	inc/
 
+HEADERS		:= $(addprefix $(INC_DIR), $(INC))
+
 SRC_DIR		:=	src/
-SRC			:=	main.c \
+SRC			:=	fdf.c \
 				parse_map.c \
 				draw_wireframe.c \
 				fdf_errors.c \
 				fdf_utils.c \
-				mlx_utils.c
+				mlx_utils.c \
+				math_utils.c
 
 LIBFT_A		:=	lib/libft/libft.a
 LIBFT_DIR	:=	lib/libft/
@@ -64,7 +67,7 @@ $(MLX_A): $(MLX_DIR)
 	@$(MAKE) -C $(MLX_DIR)
 	@echo "> MLX Done!\n"
 
-$(OBJ): $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(LIBFT_DIR) $(INC_DIR)$(INC)
+$(OBJ): $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(LIBFT_DIR) $(HEADERS) 
 	@mkdir -p $(@D)
 	@echo "$(_GREEN)compiling: $<$(_END)"
 	@$(CC) $(CC_FLAGS) $(DEBUG_FLAG) -I$(INC_DIR) -I$(LIBFT_INC) -I$(MLX_DIR) -c $< -o $@
@@ -81,4 +84,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re build_libft
+.PHONY: all clean fclean re build_libft echo

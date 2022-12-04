@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:00:44 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/11/30 17:00:06 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/03 09:56:02 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_print_map(t_map *map)
 	int	j;
 
 	i = 0;
+	ft_printf("\n---------------- MAP ----------------\n");
 	while (i < map->height)
 	{
 		j = 0;
@@ -26,6 +27,7 @@ void	ft_print_map(t_map *map)
 		ft_printf("\n");
 		i++;
 	}
+	ft_printf("\n");
 }
 
 // Free the current grid and exit program
@@ -41,23 +43,4 @@ void	ft_free_map(t_map *map)
 		free(map->grid);
 	}
 	free(map);
-}
-
-void	free_map_file_content(void *content)
-{
-	free((char *)content);
-}
-
-int	min(int a, int b)
-{
-	if (a < b)
-		return (a);
-	return (b);
-}
-
-int	max(int a, int b)
-{
-	if (a > b)
-		return (a);
-	return (b);
 }
