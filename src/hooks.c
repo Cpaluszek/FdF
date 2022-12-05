@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:47:10 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/05 13:05:27 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/05 14:20:17 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,16 @@ void	setup_mlx_hooks(t_fdf *fdf)
 }
 
 //TODO: remove printf on keys
-//TODO: set max and min for angle and height mult
 // NOTE: define increments in header
 int	keyboard_hooks(int key, t_fdf *fdf)
 {
 	if (key == ESC)
 		exit_fdf(fdf);
 	else if (key == SPACE)
+	{
 		set_default_map_parameters(fdf->map);
+		draw_wireframe(fdf);
+	}
 	else if (key == RIGHT_ANGLE_BRACKET || key == LEFT_ANGLE_BRACKET)
 		height_mult(key, fdf);
 	else if (key == KEY_E || key == KEY_Q)
@@ -49,7 +51,7 @@ int	button_hooks(t_fdf *mlx)
 	return (0);
 }
 
-// Todo: on mouse scroll zoom and center bellow cursor
+// Todo:on mouse scroll zoom and center bellow cursor
 int	mouse_hooks(int key, int x, int y, t_fdf *fdf)
 {
 	(void) x;

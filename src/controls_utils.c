@@ -6,12 +6,13 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:56:08 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/05 13:04:57 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/05 14:18:29 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+//TODO: set max and min for angle and height mult
 void	zoom(int key, t_fdf *fdf)
 {
 	if (key == NUM_PAD_PLUS || key == SCROLL_UP)
