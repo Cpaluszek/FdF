@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:00:44 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/05 14:53:12 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/05 16:02:24 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ void	ft_free_map(t_map *map)
 
 void	set_default_map_parameters(t_map *map)
 {
-	map->max_depth = INT_MAX;
-	map->min_depth = INT_MIN;
-	map->angle = deg_to_rad(INITIAL_ANGLE);
-	map->zoom = min((WIN_WIDTH - MENU_WIDTH) / map->width, \
+	map->alpha = 0;
+	map->beta = 0;
+	map->gamma = 0;
+	map->zoom = ft_min((WIN_WIDTH - MENU_WIDTH) / map->width, \
 		WIN_HEIGHT / map->height);
 	map->shift_x = WIN_WIDTH / 2;
 	map->shift_y = WIN_HEIGHT / 2;

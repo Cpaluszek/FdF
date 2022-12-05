@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:47:10 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/05 14:20:17 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/05 15:04:53 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ int	keyboard_hooks(int key, t_fdf *fdf)
 	}
 	else if (key == RIGHT_ANGLE_BRACKET || key == LEFT_ANGLE_BRACKET)
 		height_mult(key, fdf);
-	else if (key == KEY_E || key == KEY_Q)
+	else if (key == NUM_PAD_1 || key == NUM_PAD_2
+		|| key == NUM_PAD_3 || key == NUM_PAD_4
+		|| key == NUM_PAD_4 || key == NUM_PAD_6
+		|| key == NUM_PAD_8)
 		rotate(key, fdf);
 	else if (key == NUM_PAD_PLUS || key == NUM_PAD_MINUS)
 		zoom(key, fdf);

@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:51:30 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/05 14:41:59 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/05 16:22:01 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,7 @@ void	draw_line(t_fdf *fdf, t_vector p1, t_vector p2)
 	project(fdf, &p2, z2);
 	if (!check_bounds(p1) && check_bounds(p2))
 		swap_points(&p1, &p2);
-	if (z1 != 0 || z2 != 0)
-		fdf->map->color = RED;
-	else
-		fdf->map->color = WHITE;
+	fdf->map->color = get_color(ft_max(z1, z2), fdf->map);
 	dx = p2.x - p1.x;
 	dy = p2.y - p1.y;
 	max = fmax(fabs(dx), fabs(dy));
@@ -89,12 +86,91 @@ void	draw_line(t_fdf *fdf, t_vector p1, t_vector p2)
 	}
 }
 
+double	percent(int start, int end, int current)
+{
+	double	placement;
+	double	distance;
+
+	placement = current - start;
+	distance = end - start;
+	if (distance == 0)
+		return (1);
+	return (placement / distance);
+}
+
+int	get_color(int z, t_map *map)
+{
+	double	percentage;
+
+	percentage = percent(map->min_depth, map->max_depth, z);
+	if (percentage < 0.1f)
+		return (COLOR_P0_0);
+	else if (percentage < 0.2f)
+		return (COLOR_P0_1);
+	else if (percentage < 0.3f)
+		return (COLOR_P0_2);
+	else if (percentage < 0.4f)
+		return (COLOR_P0_3);
+	else if (percentage < 0.5f)
+		return (COLOR_P0_4);
+	else if (percentage < 0.6f)
+		return (COLOR_P0_5);
+	else if (percentage < 0.7f)
+		return (COLOR_P0_6);
+	else if (percentage < 0.8f)
+		return (COLOR_P0_7);
+	else if (percentage < 0.9f)
+		return (COLOR_P0_8);
+	else
+		return (COLOR_P0_9);
+}
+
+static void	rotate_x(float *y, float *z, double alpha)
+{
+	float	previous_y;
+
+	previous_y = *y;
+	*y = previous_y * cos(alpha) + *z * sin(alpha);
+	*z = -previous_y * sin(alpha) + *z * cos(alpha);
+}
+
+/*
+** Rotate coordinate by y axis
+*/
+
+static void	rotate_y(float *x, float *z, double beta)
+{
+	float	previous_x;
+
+	previous_x = *x;
+	*x = previous_x * cos(beta) + *z * sin(beta);
+	*z = -previous_x * sin(beta) + *z * cos(beta);
+}
+
+/*
+** Rotate coordinate by z axis
+*/
+
+static void	rotate_z(float *x, float *y, double gamma)
+{
+	float	previous_x;
+	float	previous_y;
+
+	previous_x = *x;
+	previous_y = *y;
+	*x = previous_x * cos(gamma) - previous_y * sin(gamma);
+	*y = previous_x * sin(gamma) + previous_y * cos(gamma);
+}
+
 void	project(t_fdf *fdf, t_vector *p, int z)
 {
 	p->x -= fdf->map->width / 2;
 	p->y -= fdf->map->height / 2;
 	p->x *= fdf->map->zoom;
 	p->y *= fdf->map->zoom;
+	rotate_x(&p->y, (float *)&z, fdf->map->alpha);
+	rotate_y(&p->x, (float *)&z, fdf->map->beta);
+	rotate_z(&p->x, &p->y, fdf->map->gamma);
 	isometric_projection(fdf, p, z);
 	p->x += fdf->map->shift_x;
 	p->y += fdf->map->shift_y;
@@ -103,7 +179,7 @@ void	project(t_fdf *fdf, t_vector *p, int z)
 // Isometric projection
 void	isometric_projection(t_fdf *fdf, t_vector *p, int z)
 {
-	p->x = cos(fdf->map->angle) * (p->x - p->y);
-	p->y = sin(fdf->map->angle) * (p->x + p->y) \
+	p->x = cos(0.523599f) * (p->x - p->y);
+	p->y = sin(0.523599f) * (p->x + p->y) \
 		- (z * fdf->map->height_mult * fdf->map->zoom / 50);
 }

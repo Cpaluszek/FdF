@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/05 14:51:22 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/05 15:49:29 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,9 @@ typedef struct s_map
 	float	zoom;
 	int		shift_x;
 	int		shift_y;
-	float	angle;
+	double	alpha;
+	double	beta;
+	double	gamma;
 	int		color;
 	int		**grid;
 }	t_map;
@@ -92,10 +94,13 @@ void	height_mult(int key, t_fdf *fdf);
 void	ft_free_map(t_map *map);
 void	free_map_file_content(void *content);
 void	exit_fdf(t_fdf	*mlx);
-int		min(int a, int b);
-int		max(int a, int b);
+int		ft_min(int a, int b);
+int		ft_max(int a, int b);
 double	deg_to_rad(int angle);
 void	swap_points(t_vector *p1, t_vector *p2);
+int		get_color(int z, t_map *map);
+double	percent(int start, int end, int current);
+
 
 /*	Debug	*/
 void	ft_print_map(t_map *map);
