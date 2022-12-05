@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:00:44 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/05 14:24:50 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/05 14:39:09 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,16 @@ void	ft_check_extremums(t_map *map, int depth)
 		map->max_depth = depth;
 	if (depth < map->min_depth)
 		map->min_depth = depth;
+}
+
+void	swap_points(t_vector *p1, t_vector *p2)
+{
+	float	temp;
+
+	temp = p1->x;
+	p1->x = p2->x;
+	p2->x = temp;
+	temp = p1->y;
+	p1->y = p2->y;
+	p2->y = temp;
 }

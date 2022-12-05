@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/05 13:47:21 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/05 14:31:37 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void	exit_fdf(t_fdf	*mlx);
 int		min(int a, int b);
 int		max(int a, int b);
 double	deg_to_rad(int angle);
+void	swap_points(t_vector *p1, t_vector *p2);
 
 /*	Debug	*/
 void	ft_print_map(t_map *map);

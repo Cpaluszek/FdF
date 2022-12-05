@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:51:30 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/05 13:10:41 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/05 14:39:17 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ void	draw_wireframe(t_fdf *fdf)
 // Bresenham line generation
 // 	- line is drawn from left to right
 // Todo: color gradient
-//TODO: swap values if they're not in correct order
-// To avoid line drawing starting out of bounds
 void	draw_line(t_fdf *fdf, t_vector p1, t_vector p2)
 {
 	float	dx;
@@ -72,6 +70,8 @@ void	draw_line(t_fdf *fdf, t_vector p1, t_vector p2)
 	z2 = fdf->map->grid[(int)p2.y][(int)p2.x];
 	project(fdf, &p1, z1);
 	project(fdf, &p2, z2);
+	if (!check_bounds(p1) && check_bounds(p2))
+		swap_points(&p1, &p2);
 	if (z1 != 0 || z2 != 0)
 		fdf->map->color = RED;
 	else
