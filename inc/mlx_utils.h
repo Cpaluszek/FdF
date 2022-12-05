@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:10:47 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/05 13:06:19 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/05 13:11:45 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 # define WIN_HEIGHT		1200
 # define WIN_WIDTH		1600
-# define MENU_WIDTH		275
+# define MENU_WIDTH		250
 # define MENU_HEIGHT	300
 # define WIN_NAME		"fdf"
 
