@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/05 15:49:29 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/05 17:15:33 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,19 @@ typedef struct s_vector
 // Note: camera auto scroll on specific key press ?
 typedef struct s_map
 {
-	int		height;
-	int		width;
-	int		max_depth;
-	int		min_depth;
-	int		height_mult;
-	float	zoom;
-	int		shift_x;
-	int		shift_y;
-	double	alpha;
-	double	beta;
-	double	gamma;
-	int		color;
-	int		**grid;
+	int				height;
+	int				width;
+	int				max_depth;
+	int				min_depth;
+	int				height_mult;
+	float			zoom;
+	int				shift_x;
+	int				shift_y;
+	double			alpha;
+	double			beta;
+	double			gamma;
+	unsigned int	color;
+	int				**grid;
 }	t_map;
 
 typedef struct s_fdf
