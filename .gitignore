@@ -2,3 +2,4 @@ build/
 fdf
 *.a
 .vscode/
+data/ref/*

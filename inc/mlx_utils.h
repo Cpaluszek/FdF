@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:10:47 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/04 14:41:47 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/05 11:23:19 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,16 @@
 /*	Colors	*/
 # define WHITE	0x00FFFFFF
 # define RED	0x00FF0000
+
+# define TEXT_COLOR			0xEAEAEA
+# define BACKGROUND			0x222222
+# define MENU_BACKGROUND	0x1E1E1E
+
+# define COLOR_DISCO		0x9A1F6A
+# define COLOR_BRICK_RED	0xC2294E
+# define COLOR_FLAMINGO		0xEC4B27
+# define COLOR_JAFFA		0xEF8633
+# define COLOR_SAFFRON		0xF3AF3D
 
 enum	e_keycodes
 {
