@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:51:30 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/05 14:39:17 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/05 14:41:59 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	project(t_fdf *fdf, t_vector *p, int z)
 // Isometric projection
 void	isometric_projection(t_fdf *fdf, t_vector *p, int z)
 {
-	p->x = cos(deg_to_rad(fdf->map->angle)) * (p->x - p->y);
-	p->y = sin(deg_to_rad(fdf->map->angle)) * (p->x + p->y) \
+	p->x = cos(fdf->map->angle) * (p->x - p->y);
+	p->y = sin(fdf->map->angle) * (p->x + p->y) \
 		- (z * fdf->map->height_mult * fdf->map->zoom / 50);
 }

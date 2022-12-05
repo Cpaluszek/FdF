@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:00:44 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/05 14:39:09 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/05 14:53:12 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,11 @@ void	ft_free_map(t_map *map)
 	free(map);
 }
 
-// Todo: set zoom depending on number of points
 void	set_default_map_parameters(t_map *map)
 {
 	map->max_depth = INT_MAX;
 	map->min_depth = INT_MIN;
-	map->angle = INITIAL_ANGLE;
+	map->angle = deg_to_rad(INITIAL_ANGLE);
 	map->zoom = min((WIN_WIDTH - MENU_WIDTH) / map->width, \
 		WIN_HEIGHT / map->height);
 	map->shift_x = WIN_WIDTH / 2;

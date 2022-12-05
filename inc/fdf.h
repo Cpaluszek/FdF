@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/05 14:31:37 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/05 14:51:22 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct s_map
 	float	zoom;
 	int		shift_x;
 	int		shift_y;
-	int		angle;
+	float	angle;
 	int		color;
 	int		**grid;
 }	t_map;

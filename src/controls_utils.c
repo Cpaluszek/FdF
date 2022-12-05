@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:56:08 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/05 14:18:29 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/05 14:52:31 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ void	move(int key, t_fdf *fdf)
 void	rotate(int key, t_fdf *fdf)
 {
 	if (key == KEY_E)
-		fdf->map->angle--;
+		fdf->map->angle += .015f;
 	else if (key == KEY_Q)
-		fdf->map->angle++;
+		fdf->map->angle -= .015f;
 	draw_wireframe(fdf);
 }
 
