@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:51:30 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/05 11:21:50 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/05 13:09:03 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,30 @@
 #include <math.h>
 
 //NOTE: background color
+static void	draw_background(t_fdf *fdf)
+{
+	int	*image;
+	int	i;
+
+	image = (int *)(fdf->data.addr);
+	i = 0;
+	while (i < WIN_HEIGHT * WIN_WIDTH)
+	{
+		if (i % WIN_WIDTH < MENU_WIDTH && i / WIN_WIDTH < MENU_HEIGHT)
+			image[i] = MENU_BACKGROUND;
+		else
+			image[i] = BACKGROUND;
+		i++;
+	}
+}
+
 void	draw_wireframe(t_fdf *fdf)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	fdf->data.img = mlx_new_image(fdf->mlx, WIN_WIDTH, WIN_HEIGHT);
-	fdf->data.addr = mlx_get_data_addr(fdf->data.img, \
-		&fdf->data.bits_per_pixel, &fdf->data.line_length, &fdf->data.endian);
+	draw_background(fdf);
 	while (i < fdf->map->height)
 	{
 		j = 0;
@@ -37,6 +52,7 @@ void	draw_wireframe(t_fdf *fdf)
 		i++;
 	}
 	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->data.img, 0, 0);
+	print_menu(fdf);
 }
 
 // Bresenham line generation
@@ -71,6 +87,29 @@ void	draw_line(t_fdf *fdf, t_vector p1, t_vector p2)
 		p1.x += dx;
 		p1.y += dy;
 	}
+}
+
+void	print_menu(t_fdf *fdf)
+{
+	int		y;
+	void	*mlx;
+	void	*win;
+
+	y = 0;
+	mlx = fdf->mlx;
+	win = fdf->win;
+	mlx_string_put(mlx, win, 65, y += 20, TEXT_COLOR, "Controls :");
+	mlx_string_put(mlx, win, 15, y += 35, TEXT_COLOR, "Zoom: Scroll or +/-");
+	mlx_string_put(mlx, win, 15, y += 30, TEXT_COLOR, "Move: WASD");
+	mlx_string_put(mlx, win, 15, y += 30, TEXT_COLOR, "Rotate: A/E");
+	mlx_string_put(mlx, win, 15, y += 30, TEXT_COLOR, "Flatten: </>");
+	// mlx_string_put(mlx, win, 15, y += 30, TEXT_COLOR, "Rotate:");
+	// mlx_string_put(mlx, win, 57, y += 25, TEXT_COLOR, "X-Axis - 2/8");
+	// mlx_string_put(mlx, win, 57, y += 25, TEXT_COLOR, "Y-Axis - 4/6");
+	// mlx_string_put(mlx, win, 57, y += 25, TEXT_COLOR, "Z-Axis - 1(3)/7(9)");
+	// mlx_string_put(mlx, win, 15, y += 30, TEXT_COLOR, "Projection");
+	// mlx_string_put(mlx, win, 57, y += 25, TEXT_COLOR, "ISO: I Key");
+	// mlx_string_put(mlx, win, 57, y += 25, TEXT_COLOR, "Parallel: P Key");
 }
 
 void	project(t_fdf *fdf, t_vector *p, int z)

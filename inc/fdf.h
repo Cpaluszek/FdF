@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/05 11:17:32 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/05 12:58:05 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 # define INITIAL_ZOOM			50
 # define INITIAL_ANGLE			45
-# define INITIAL_HEIGHT_MULT	2
+#define INITIAL_HEIGHT_MULT	2
 
 typedef struct s_vector
 {
@@ -79,6 +79,13 @@ int		keyboard_hooks(int key, t_fdf *mlx);
 int		button_hooks(t_fdf *mlx);
 int		mouse_hooks(int key, int x, int y, t_fdf *fdf);
 
+/*	Controls Utils	*/
+void	zoom(int key, t_fdf *fdf);
+void	move(int key, t_fdf *fdf);
+void	rotate(int key, t_fdf *fdf);
+void	height_mult(int key, t_fdf *fdf);
+
+
 /*	Utils	*/
 void	ft_free_map(t_map *map);
 void	free_map_file_content(void *content);
@@ -89,5 +96,8 @@ double	deg_to_rad(int angle);
 
 /*	Debug	*/
 void	ft_print_map(t_map *map);
+
+
+void	print_menu(t_fdf *fdf);
 
 #endif

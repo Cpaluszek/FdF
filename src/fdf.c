@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:51 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/04 11:43:17 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/05 11:26:57 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ int	main(int argc, char **argv)
 	fdf.mlx = mlx_init();
 	fdf.win = mlx_new_window(fdf.mlx, WIN_WIDTH, WIN_HEIGHT, WIN_NAME);
 	setup_mlx_hooks(&fdf);
+	fdf.data.img = mlx_new_image(fdf.mlx, WIN_WIDTH, WIN_HEIGHT);
+	fdf.data.addr = mlx_get_data_addr(fdf.data.img, \
+		&fdf.data.bits_per_pixel, &fdf.data.line_length, &fdf.data.endian);
 	draw_wireframe(&fdf);
 	mlx_loop(fdf.mlx);
 	return (0);

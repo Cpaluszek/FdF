@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:47:10 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/04 15:00:14 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/05 13:05:27 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,32 +29,16 @@ int	keyboard_hooks(int key, t_fdf *fdf)
 		exit_fdf(fdf);
 	else if (key == SPACE)
 		set_default_map_parameters(fdf->map);
-	else if (key == ARROW_UP)
-		fdf->map->height_mult++;
-	else if (key == ARROW_DOWN)
-		fdf->map->height_mult--;
-	else if (key == KEY_E)
-		fdf->map->angle--;
-	else if (key == KEY_Q)
-		fdf->map->angle++;
-	else if (key == NUM_PLUS)
-		fdf->map->zoom *= 1.05f;
-	else if (key == NUM_DOWN)
-		fdf->map->zoom *= 0.95f;
-	else if (key == KEY_W)
-		fdf->map->shift_y += 10;
-	else if (key == KEY_A)
-		fdf->map->shift_x += 10;
-	else if (key == KEY_S)
-		fdf->map->shift_y -= 10;
-	else if (key == KEY_D)
-		fdf->map->shift_x -= 10;
+	else if (key == RIGHT_ANGLE_BRACKET || key == LEFT_ANGLE_BRACKET)
+		height_mult(key, fdf);
+	else if (key == KEY_E || key == KEY_Q)
+		rotate(key, fdf);
+	else if (key == NUM_PAD_PLUS || key == NUM_PAD_MINUS)
+		zoom(key, fdf);
+	else if (key == KEY_W || key == KEY_A || key == KEY_S || key == KEY_D)
+		move(key, fdf);
 	else
-	{
 		ft_printf("key = %d\n", key);
-		return (0);
-	}
-	draw_wireframe(fdf);
 	return (0);
 }
 
@@ -70,15 +54,9 @@ int	mouse_hooks(int key, int x, int y, t_fdf *fdf)
 {
 	(void) x;
 	(void) y;
-	if (key == SCROLL_DOWN)
-		fdf->map->zoom *= 0.95f;
-	else if (key == SCROLL_UP)
-		fdf->map->zoom *= 1.05f;
+	if (key == SCROLL_DOWN || key == SCROLL_UP)
+		zoom(key, fdf);
 	else
-	{
 		ft_printf("key = %d\n", key);
-		return (0);
-	}
-	draw_wireframe(fdf);
 	return (0);
 }
