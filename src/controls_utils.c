@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:56:08 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/05 15:10:02 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 09:45:28 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,23 @@ void	height_mult(int key, t_fdf *fdf)
 	else if (key == LEFT_ANGLE_BRACKET)
 		fdf->map->height_mult--;
 	draw_wireframe(fdf);
+}
+
+void	change_projection(int key, t_fdf *fdf)
+{
+	if (key == KEY_I && fdf->map->projection == PARALLEL)
+		fdf->map->projection = ISO;
+	else if (key == KEY_P && fdf->map->projection == ISO)
+		fdf->map->projection = PARALLEL;
+	else
+		return ;
+	reset_rotations(fdf);
+	draw_wireframe(fdf);
+}
+
+void	reset_rotations(t_fdf *fdf)
+{
+	fdf->map->alpha = 0;
+	fdf->map->beta = 0;
+	fdf->map->gamma = 0;
 }

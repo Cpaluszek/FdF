@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 08:56:25 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 09:42:38 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ typedef struct s_vector
 	float	x;
 	float	y;
 }	t_vector;
+
+typedef enum e_projection
+{
+	ISO,
+	PARALLEL
+}	t_projection;
 
 // Note: use vectors for height-width / min-max
 // Note: sub structure for position / camera settings
@@ -46,6 +52,7 @@ typedef struct s_map
 	double			beta;
 	double			gamma;
 	unsigned int	color;
+	t_projection	projection;
 	int				**grid;
 }	t_map;
 
@@ -68,9 +75,10 @@ void	set_default_map_parameters(t_map *map);
 /*	Drawing	*/
 void	draw_wireframe(t_fdf *mlx);
 void	draw_line(t_fdf *mlx, t_vector p1, t_vector p2);
-void	isometric_projection(t_fdf *mlx, t_vector *p, int z);
 int		check_bounds(const t_vector p);
 void	project(t_fdf *fdf, t_vector *p, int z);
+void	isometric_projection(t_fdf *mlx, t_vector *p, int z);
+void	parallel_projection(t_fdf *fdf, t_vector *p, int z);
 
 /*	Menu	*/
 void	print_menu(t_fdf *fdf);
@@ -89,6 +97,8 @@ void	zoom(int key, t_fdf *fdf);
 void	move(int key, t_fdf *fdf);
 void	rotate(int key, t_fdf *fdf);
 void	height_mult(int key, t_fdf *fdf);
+void	change_projection(int key, t_fdf *fdf);
+void	reset_rotations(t_fdf *fdf);
 
 /*	Utils	*/
 void	ft_free_map(t_map *map);

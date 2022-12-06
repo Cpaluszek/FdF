@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:47:10 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/05 15:04:53 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 09:45:04 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ int	keyboard_hooks(int key, t_fdf *fdf)
 		zoom(key, fdf);
 	else if (key == KEY_W || key == KEY_A || key == KEY_S || key == KEY_D)
 		move(key, fdf);
+	else if (key == KEY_I || key == KEY_P)
+		change_projection(key, fdf);
+	else if (key == KEY_R)
+		reset_rotations(fdf);
 	else
 		ft_printf("key = %d\n", key);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:10:47 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/05 16:31:21 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 09:49:54 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 # define WIN_HEIGHT		1080
 # define WIN_WIDTH		1920
 # define MENU_WIDTH		250
-# define MENU_HEIGHT	300
+# define MENU_HEIGHT	350
 # define WIN_NAME		"fdf"
 
 /*	Colors	*/
-# define WHITE	0x00FFFFFF
-# define RED	0x00FF0000
-# define GREEN	0x0000FF00
-# define BLUE	0x000000FF
+# define WHITE	0xFFFFFF
+# define RED	0xFF0000
+# define GREEN	0x00FF00
+# define BLUE	0x0000FF
 
 # define TEXT_COLOR			0xEAEAEA
 # define BACKGROUND			0x222222
@@ -99,6 +99,9 @@ enum	e_keycodes
 	KEY_Q = 12,
 	KEY_W = 13,
 	KEY_E = 14,
+	KEY_R = 15,
+	KEY_I = 34,
+	KEY_P = 35,
 	LEFT_ANGLE_BRACKET = 43,
 	RIGHT_ANGLE_BRACKET = 47,
 	SPACE = 49,

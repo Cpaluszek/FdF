@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:00:44 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/05 16:02:24 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 09:33:25 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	set_default_map_parameters(t_map *map)
 	map->shift_y = WIN_HEIGHT / 2;
 	map->height_mult = INITIAL_HEIGHT_MULT;
 	map->color = WHITE;
+	map->projection = ISO;
 }
 
 void	ft_check_extremums(t_map *map, int depth)
