@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 11:15:00 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 12:36:17 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,16 +81,16 @@ t_point	new_point(int x, int y, int z);
 void	draw_wireframe(t_fdf *mlx);
 void	draw_line(t_fdf *mlx, t_point p1, t_point p2);
 int		check_bounds(const t_point p);
-void	project(t_fdf *fdf, t_point *p, int z);
+void	project(t_fdf *fdf, t_point *p);
 
 /* 	Projections	*/
-void	isometric_projection(t_fdf *mlx, t_point *p, int z);
-void	parallel_projection(t_fdf *fdf, t_point *p, int z);
+void	isometric_projection(t_fdf *mlx, t_point *p);
+void	parallel_projection(t_fdf *fdf, t_point *p);
 
 /*	Rotations	*/
-void	rotate_x(float *y, float *z, double alpha);
-void	rotate_y(float *x, float *z, double beta);
-void	rotate_z(float *x, float *y, double gamma);
+void	rotate_x(t_point *p, double alpha);
+void	rotate_y(t_point *p, double beta);
+void	rotate_z(t_point *p, double gamma);
 
 /*	Menu	*/
 void	print_menu(t_fdf *fdf);

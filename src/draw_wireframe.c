@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:51:30 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 11:18:04 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 12:34:53 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ void	draw_line(t_fdf *fdf, t_point p1, t_point p2)
 	float	dy;
 	float	max;
 
-	project(fdf, &p1, p1.z);
-	project(fdf, &p2, p2.z);
+	project(fdf, &p1);
+	project(fdf, &p2);
 	if (!check_bounds(p1) && check_bounds(p2))
 		swap_points(&p1, &p2);
 	fdf->map->color = get_color(ft_max(p1.z, p2.z), fdf->map);

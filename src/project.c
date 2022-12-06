@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 08:55:38 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 10:42:56 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 12:40:24 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,33 @@
 #include <math.h>
 
 // #include <stdio.h>
-void	project(t_fdf *fdf, t_point *p, int z)
+void	project(t_fdf *fdf, t_point *p)
 {
 	p->x -= fdf->map->width / 2;
 	p->y -= fdf->map->length / 2;
-	rotate_z(&p->x, &p->y, fdf->cam->gamma);
-	rotate_x(&p->y, (float *)&z, fdf->cam->alpha);
-	rotate_y(&p->x, (float *)&z, fdf->cam->beta);
 	p->x *= fdf->cam->zoom;
 	p->y *= fdf->cam->zoom;
+	rotate_z(p, fdf->cam->gamma);
+	rotate_x(p, fdf->cam->alpha);
+	rotate_y(p, fdf->cam->beta);
 	if (fdf->cam->projection == ISO)
-		isometric_projection(fdf, p, z);
+		isometric_projection(fdf, p);
 	else
-		parallel_projection(fdf, p, z);
+		parallel_projection(fdf, p);
 	p->x += fdf->cam->shift_x;
 	p->y += fdf->cam->shift_y;
 }
 
 // Isometric projection
 // TODO: adjust /50 division
-void	isometric_projection(t_fdf *fdf, t_point *p, int z)
+void	isometric_projection(t_fdf *fdf, t_point *p)
 {
-	p->x = cos(0.523599f) * (p->x - p->y);
-	p->y = sin(0.523599f) * (p->x + p->y) \
-		- (z * fdf->cam->z_mult * fdf->cam->zoom / 50);
+	p->x = cos(0.8f) * (p->x - p->y);
+	p->y = sin(0.8f) * (p->x + p->y) \
+		- (p->z * fdf->cam->z_mult * fdf->cam->zoom / 50);
 }
 
-void	parallel_projection(t_fdf *fdf, t_point *p, int z)
+void	parallel_projection(t_fdf *fdf, t_point *p)
 {
 	float	x;
 	float	y;
@@ -49,5 +49,5 @@ void	parallel_projection(t_fdf *fdf, t_point *p, int z)
 	y = p->y;
 	p->x = y + cos(0.523599f) * x;
 	p->y = sin(0.523599f) * x \
-		- (z * fdf->cam->z_mult * fdf->cam->zoom / 50);
+		- (p->z * fdf->cam->z_mult * fdf->cam->zoom / 50);
 }
