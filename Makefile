@@ -15,6 +15,7 @@ SRC			:=	fdf.c \
 				parse_map.c \
 				draw_wireframe.c \
 				project.c \
+				rotate.c \
 				fdf_errors.c \
 				fdf_utils.c \
 				mlx_utils.c \

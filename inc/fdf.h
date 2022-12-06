@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 09:56:07 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 10:18:39 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,15 @@ void	draw_wireframe(t_fdf *mlx);
 void	draw_line(t_fdf *mlx, t_vector p1, t_vector p2);
 int		check_bounds(const t_vector p);
 void	project(t_fdf *fdf, t_vector *p, int z);
+
+/* 	Projections	*/
 void	isometric_projection(t_fdf *mlx, t_vector *p, int z);
 void	parallel_projection(t_fdf *fdf, t_vector *p, int z);
+
+/*	Rotations	*/
+void	rotate_x(float *y, float *z, double alpha);
+void	rotate_y(float *x, float *z, double beta);
+void	rotate_z(float *x, float *y, double gamma);
 
 /*	Menu	*/
 void	print_menu(t_fdf *fdf);
