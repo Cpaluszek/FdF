@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 15:21:56 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:18:45 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,8 @@ void	set_palette_neon_space(t_map *map);
 void	set_palette_sweet(t_map *map);
 void	set_palette_hyperchill(t_map *map);
 void	set_palette_regal(t_map *map);
+int		get_light(int start, int end, double percentage);
+int		lerp_color(t_point current, t_point start, t_point end, t_point delta);
 
 /*	Math Utils	*/
 int		ft_min(int a, int b);
