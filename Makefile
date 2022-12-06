@@ -17,7 +17,7 @@ SRC			:=	fdf.c \
 				project.c \
 				fdf_errors.c \
 				fdf_utils.c \
-				free.c \
+				free_allocations.c \
 				mlx_utils.c \
 				hooks.c \
 				controls_utils.c \

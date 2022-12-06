@@ -1,19 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   free_allocations.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 11:19:13 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 11:33:38 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:30:53 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-//TODO: find a better file name
-// Free the current grid and exit program
 void	free_grid(int **grid, int size)
 {
 	int	i;
