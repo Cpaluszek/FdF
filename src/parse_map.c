@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:55:07 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 14:51:54 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:37:51 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_parse_map(char *path, t_map *map, t_camera *cam)
 	map->min_z = INT_MAX;
 	map->max_z = INT_MIN;
 	set_default_cam_parameters(cam, map);
-	generate_points(map, map_file);
+	generate_points(map, map_file, -1);
 	if (close(fd) == -1)
 		manage_errors(2, path);
 }
@@ -116,10 +116,9 @@ int	**ft_populate_grid(t_map *map, t_list *map_file, int i)
 	return (grid);
 }
 
-void	generate_points(t_map *map, t_list *map_file)
+void	generate_points(t_map *map, t_list *map_file, int i)
 {
 	int	**grid;
-	int	i;
 	int	j;
 
 	grid = ft_populate_grid(map, map_file, -1);
@@ -130,8 +129,7 @@ void	generate_points(t_map *map, t_list *map_file)
 		free_grid(grid, map->length);
 		manage_errors(3, "map->points");
 	}
-	i = 0;
-	while (i < map->length)
+	while (++i < map->length)
 	{
 		map->points[i] = malloc(sizeof(t_point) * map->width);
 		if (map->points[i] == NULL)
@@ -139,13 +137,9 @@ void	generate_points(t_map *map, t_list *map_file)
 			free_grid(grid, map->length);
 			manage_errors(3, "map->points[row]");
 		}
-		j = 0;
-		while (j < map->width)
-		{
+		j = -1;
+		while (++j < map->width)
 			map->points[i][j] = new_point(j, i, grid[i][j], map);
-			j++;
-		}
-		i++;
 	}
 	free_grid(grid, map->length);
 }

@@ -1,14 +1,9 @@
 
 Todo:
   Parsing:
-    ☐ Check for Hex values
     ☐ Check errors
       ✔ double space characters @done(22-12-03 10:03)
       ☐ Invalid map size
-  Wireframe:
-    ✔ Projection algo @done(22-12-03 09:52)
-    ☐ Rotation
-    ☐ Zoom
   Refacto:
     ✔ lstclear - try with free instead of custom free @started(22-12-03 09:55) @done(22-12-03 09:56) @lasted(1m43s)
     ✔ Create `fdf_exit` function (free + return code) @done(22-12-03 10:19)
