@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:55:07 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/05 16:02:59 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 09:55:43 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	ft_parse_map(char *path, t_map *map)
 		manage_errors(1, path);
 	ft_read_map_file(fd, &map_file);
 	ft_init_map(map, map_file, ft_lstsize(map_file));
-	map->min_depth = INT_MAX;
-	map->max_depth = INT_MIN;
+	map->min_z = INT_MAX;
+	map->max_z = INT_MIN;
 	set_default_map_parameters(map);
 	ft_populate_grid(map, map_file, -1);
 	ft_lstclear(&map_file, &free);
@@ -39,7 +39,7 @@ void	ft_init_map(t_map *map, t_list *map_file, int height)
 	int		i;
 
 	i = 0;
-	map->height = height;
+	map->length = height;
 	map->width = 0;
 	line = (char *) map_file->content;
 	while (line[i] && line[i] != '\n')
@@ -50,7 +50,7 @@ void	ft_init_map(t_map *map, t_list *map_file, int height)
 		while (ft_isspace(line[i]))
 			i++;
 	}
-	map->grid = malloc(sizeof(int *) * map->height);
+	map->grid = malloc(sizeof(int *) * map->length);
 	if (map->grid == NULL)
 	{
 		ft_free_map(map);
@@ -88,7 +88,7 @@ void	ft_populate_grid(t_map *map, t_list *map_file, int i)
 	int		j;
 	char	*line;
 
-	while (++i < map->height)
+	while (++i < map->length)
 	{
 		map->grid[i] = malloc(sizeof(int) * map->width);
 		if (map->grid[i] == NULL)

@@ -6,14 +6,13 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:51:30 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 08:55:56 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 09:54:49 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <math.h>
 
-//NOTE: background color
 static void	draw_background(t_fdf *fdf)
 {
 	int	*image;
@@ -38,14 +37,14 @@ void	draw_wireframe(t_fdf *fdf)
 
 	i = 0;
 	draw_background(fdf);
-	while (i < fdf->map->height)
+	while (i < fdf->map->length)
 	{
 		j = 0;
 		while (j < fdf->map->width)
 		{
 			if (j < fdf->map->width - 1)
 				draw_line(fdf, (t_vector){j, i}, (t_vector){j + 1, i});
-			if (i < fdf->map->height - 1)
+			if (i < fdf->map->length - 1)
 				draw_line(fdf, (t_vector){j, i}, (t_vector){j, i + 1});
 			j++;
 		}

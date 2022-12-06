@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 08:55:38 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 09:52:16 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 09:56:07 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	rotate_z(float *x, float *y, double gamma)
 void	project(t_fdf *fdf, t_vector *p, int z)
 {
 	p->x -= fdf->map->width / 2;
-	p->y -= fdf->map->height / 2;
+	p->y -= fdf->map->length / 2;
 	p->x *= fdf->map->zoom;
 	p->y *= fdf->map->zoom;
 	rotate_z(&p->x, &p->y, fdf->map->gamma);
@@ -74,7 +74,7 @@ void	isometric_projection(t_fdf *fdf, t_vector *p, int z)
 {
 	p->x = cos(0.523599f) * (p->x - p->y);
 	p->y = sin(0.523599f) * (p->x + p->y) \
-		- (z * fdf->map->height_mult * fdf->map->zoom / 50);
+		- (z * fdf->map->z_mult * fdf->map->zoom / 50);
 }
 
 void	parallel_projection(t_fdf *fdf, t_vector *p, int z)
@@ -86,5 +86,5 @@ void	parallel_projection(t_fdf *fdf, t_vector *p, int z)
 	y = p->y;
 	p->x = y + cos(0.523599f) * x;
 	p->y = sin(0.523599f) * x \
-		- (z * fdf->map->height_mult * fdf->map->zoom / 50);
+		- (z * fdf->map->z_mult * fdf->map->zoom / 50);
 }

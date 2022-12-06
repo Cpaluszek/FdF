@@ -6,13 +6,12 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:56:08 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 09:45:28 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 09:56:07 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-//TODO: set max and min for angle and height mult
 void	zoom(int key, t_fdf *fdf)
 {
 	if (key == NUM_PAD_PLUS || key == SCROLL_UP)
@@ -55,9 +54,9 @@ void	rotate(int key, t_fdf *fdf)
 void	height_mult(int key, t_fdf *fdf)
 {
 	if (key == RIGHT_ANGLE_BRACKET)
-		fdf->map->height_mult++;
+		fdf->map->z_mult++;
 	else if (key == LEFT_ANGLE_BRACKET)
-		fdf->map->height_mult--;
+		fdf->map->z_mult--;
 	draw_wireframe(fdf);
 }
 

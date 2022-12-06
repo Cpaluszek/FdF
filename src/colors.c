@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 08:53:35 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 08:54:32 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 09:55:43 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	get_color(int z, t_map *map)
 {
 	double	percentage;
 
-	percentage = percent(map->min_depth, map->max_depth, z);
+	percentage = percent(map->min_z, map->max_z, z);
 	if (percentage < 0.1f)
 		return (COLOR_P0_0);
 	else if (percentage < 0.2f)

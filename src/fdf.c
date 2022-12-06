@@ -6,13 +6,12 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:51 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/05 14:18:02 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 09:53:28 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-// TODO: check null for mlx_init function ?
 int	main(int argc, char **argv)
 {
 	t_fdf	fdf;

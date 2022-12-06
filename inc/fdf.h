@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 09:42:38 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 09:56:07 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,14 @@ typedef enum e_projection
 
 // Note: use vectors for height-width / min-max
 // Note: sub structure for position / camera settings
-// Todo: zoom convert to float
-	// increment by .1f ?
-// Note: rename height in length ?
 // Note: camera auto scroll on specific key press ?
 typedef struct s_map
 {
-	int				height;
+	int				length;
 	int				width;
-	int				max_depth;
-	int				min_depth;
-	int				height_mult;
+	int				max_z;
+	int				min_z;
+	int				z_mult;
 	float			zoom;
 	int				shift_x;
 	int				shift_y;

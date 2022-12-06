@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:00:44 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 09:33:25 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 09:56:07 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_print_map(t_map *map)
 
 	i = 0;
 	ft_printf("\n---------------- MAP ----------------\n");
-	while (i < map->height)
+	while (i < map->length)
 	{
 		j = 0;
 		while (j < map->width)
@@ -38,7 +38,7 @@ void	ft_free_map(t_map *map)
 	i = 0;
 	if (map->grid)
 	{
-		while (i < map->height)
+		while (i < map->length)
 			free(map->grid[i++]);
 		free(map->grid);
 	}
@@ -51,20 +51,20 @@ void	set_default_map_parameters(t_map *map)
 	map->beta = 0;
 	map->gamma = 0;
 	map->zoom = ft_min((WIN_WIDTH - MENU_WIDTH) / map->width, \
-		WIN_HEIGHT / map->height);
+		WIN_HEIGHT / map->length);
 	map->shift_x = WIN_WIDTH / 2;
 	map->shift_y = WIN_HEIGHT / 2;
-	map->height_mult = INITIAL_HEIGHT_MULT;
+	map->z_mult = INITIAL_HEIGHT_MULT;
 	map->color = WHITE;
 	map->projection = ISO;
 }
 
 void	ft_check_extremums(t_map *map, int depth)
 {
-	if (depth > map->max_depth)
-		map->max_depth = depth;
-	if (depth < map->min_depth)
-		map->min_depth = depth;
+	if (depth > map->max_z)
+		map->max_z = depth;
+	if (depth < map->min_z)
+		map->min_z = depth;
 }
 
 void	swap_points(t_vector *p1, t_vector *p2)
