@@ -6,11 +6,12 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:51:30 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 14:24:30 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 15:57:55 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "colors.h"
 #include <math.h>
 
 static void	draw_background(t_fdf *fdf)
@@ -56,8 +57,6 @@ void	draw_wireframe(t_fdf *fdf)
 	print_menu(fdf);
 }
 
-// Bresenham line generation
-// 	- line is drawn from left to right
 // Todo: color gradient
 void	draw_line(t_fdf *fdf, t_point p1, t_point p2)
 {

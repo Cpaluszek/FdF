@@ -6,13 +6,12 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:00:44 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 13:55:36 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 15:16:19 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <math.h>
-
 
 void	set_default_cam_parameters(t_camera *cam, t_map *map)
 {
@@ -23,6 +22,7 @@ void	set_default_cam_parameters(t_camera *cam, t_map *map)
 	cam->shift_y = WIN_HEIGHT / 2;
 	cam->z_mult = INITIAL_HEIGHT_MULT;
 	cam->projection = ISO;
+	set_palette_soapy(map);
 }
 
 void	ft_check_extremums(t_map *map, int depth)

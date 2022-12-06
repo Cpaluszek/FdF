@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 14:25:19 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 15:21:56 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,16 @@
 # define FDF_H
 # include "libft.h"
 # include "mlx_utils.h"
-# include <fcntl.h>
-
 # define INITIAL_ZOOM			50
 # define INITIAL_ANGLE			45
 # define INITIAL_HEIGHT_MULT	2
 
 typedef struct s_point
 {
-	float			x;
-	float			y;
-	int				z;
-	unsigned int	color;
+	float	x;
+	float	y;
+	int		z;
+	int		color;
 }	t_point;
 
 typedef enum e_projection
@@ -34,15 +32,14 @@ typedef enum e_projection
 	PARALLEL
 }	t_projection;
 
-// Note: camera auto scroll on specific key press ?
 typedef struct s_map
 {
-	int				length;
-	int				width;
-	int				max_z;
-	int				min_z;
-	unsigned int	color;
-	t_point			**points;
+	int		length;
+	int		width;
+	int		max_z;
+	int		min_z;
+	int		colors[10];
+	t_point	**points;
 }	t_map;
 
 typedef struct s_camera
@@ -72,7 +69,6 @@ void	ft_check_extremums(t_map *map, int depth);
 void	ft_init_map(t_map *map, t_list *map_file, int height);
 void	set_default_cam_parameters(t_camera *cam, t_map *map);
 void	generate_points(t_map *map, t_list *map_file);
-t_point	new_point(int x, int y, int z, t_map *map);
 
 /*	Drawing	*/
 void	draw_wireframe(t_fdf *mlx);
@@ -109,15 +105,22 @@ void	free_grid(int **grid, int size);
 void	free_map(t_map *map);
 void	exit_fdf(t_fdf	*mlx);
 void	swap_points(t_point *p1, t_point *p2);
+t_point	new_point(int x, int y, int z, t_map *map);
+
+/*	Colors	*/
 int		get_color(int z, t_map *map);
+void	pick_color_palette(int key, t_fdf *fdf);
+void	update_points_colors(t_fdf *fdf);
+void	set_palette_soapy(t_map *map);
+void	set_palette_neon_space(t_map *map);
+void	set_palette_sweet(t_map *map);
+void	set_palette_hyperchill(t_map *map);
+void	set_palette_regal(t_map *map);
 
 /*	Math Utils	*/
 int		ft_min(int a, int b);
 int		ft_max(int a, int b);
 float	percent(int start, int end, int current);
 double	deg_to_rad(int angle);
-
-/*	Debug	*/
-// void	ft_print_map(t_map *map);
 
 #endif

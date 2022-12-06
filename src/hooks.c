@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:47:10 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 13:56:29 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 15:16:33 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ int	keyboard_hooks(int key, t_fdf *fdf)
 		move(key, fdf);
 	else if (key == KEY_I || key == KEY_P)
 		change_projection(key, fdf);
+	else if (key == KEY_1 || key == KEY_2 || key == KEY_3
+		|| key == KEY_4 || key == KEY_5)
+		pick_color_palette(key, fdf);
 	else
 		ft_printf("key = %d\n", key);
 	return (0);

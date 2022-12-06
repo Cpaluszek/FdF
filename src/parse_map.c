@@ -6,11 +6,12 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:55:07 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 13:49:27 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 14:51:54 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <fcntl.h>
 
 // Parse file content into map structure
 void	ft_parse_map(char *path, t_map *map, t_camera *cam)

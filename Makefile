@@ -5,7 +5,7 @@
 # Folders and names
 NAME		:=	fdf
 
-INC			:=	fdf.h mlx_utils.h
+INC			:=	fdf.h mlx_utils.h colors.h
 INC_DIR		:=	inc/
 
 HEADERS		:= $(addprefix $(INC_DIR), $(INC))
@@ -23,6 +23,7 @@ SRC			:=	fdf.c \
 				controls_utils.c \
 				menu.c \
 				colors.c \
+				color_palettes.c \
 				math_utils.c
 
 LIBFT_A		:=	lib/libft/libft.a

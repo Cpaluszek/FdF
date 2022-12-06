@@ -6,11 +6,12 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 13:10:08 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 13:50:43 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 15:58:13 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include "colors.h"
 
 // Todo: polish
 void	print_menu(t_fdf *fdf)
