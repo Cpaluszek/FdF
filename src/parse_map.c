@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:55:07 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 12:51:25 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 13:49:27 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,16 +147,4 @@ void	generate_points(t_map *map, t_list *map_file)
 		i++;
 	}
 	free_grid(grid, map->length);
-}
-
-//TODO: colors
-t_point	new_point(int x, int y, int z, t_map *map)
-{
-	t_point	point;
-
-	point.x = x;
-	point.y = y;
-	point.z = z;
-	return (point);
-	point.color = get_color(point.z, map);
 }

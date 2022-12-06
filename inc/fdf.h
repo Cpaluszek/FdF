@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 13:44:30 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 13:55:01 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 # define INITIAL_ZOOM			50
 # define INITIAL_ANGLE			45
-# define INITIAL_HEIGHT_MULT	1
+# define INITIAL_HEIGHT_MULT	2
 
 typedef struct s_point
 {
@@ -51,9 +51,7 @@ typedef struct s_camera
 	int				shift_x;
 	int				shift_y;
 	int				z_mult;
-	double			alpha;
-	double			beta;
-	double			gamma;
+	float			angle;
 	t_projection	projection;
 }	t_camera;
 
@@ -85,11 +83,7 @@ void	project(t_fdf *fdf, t_point *p);
 /* 	Projections	*/
 void	isometric_projection(t_fdf *mlx, t_point *p);
 void	parallel_projection(t_fdf *fdf, t_point *p);
-
-/*	Rotations	*/
-void	rotate_x(t_point *p, double alpha);
-void	rotate_y(t_point *p, double beta);
-void	rotate_z(t_point *p, double gamma);
+void	rotate_z(t_point *p, float angle);
 
 /*	Menu	*/
 void	print_menu(t_fdf *fdf);
@@ -109,7 +103,6 @@ void	move(int key, t_fdf *fdf);
 void	rotate(int key, t_fdf *fdf);
 void	height_mult(int key, t_fdf *fdf);
 void	change_projection(int key, t_fdf *fdf);
-void	reset_rotations(t_fdf *fdf);
 
 /*	Utils	*/
 void	free_grid(int **grid, int size);

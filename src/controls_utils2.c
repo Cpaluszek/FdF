@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 11:15:33 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 11:16:03 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 13:56:20 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@ void	change_projection(int key, t_fdf *fdf)
 		fdf->cam->projection = PARALLEL;
 	else
 		return ;
-	reset_rotations(fdf);
 	draw_wireframe(fdf);
 }

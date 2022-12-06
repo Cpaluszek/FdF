@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:00:44 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 13:25:58 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 13:55:36 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,7 @@
 
 void	set_default_cam_parameters(t_camera *cam, t_map *map)
 {
-	cam->alpha = 0;
-	cam->beta = 0;
-	cam->gamma = 0;
+	cam->angle = 0;
 	cam->zoom = ft_min((WIN_WIDTH - MENU_WIDTH) / map->width, \
 		WIN_HEIGHT / map->length);
 	cam->shift_x = WIN_WIDTH / 2 + MENU_WIDTH / 6;
@@ -46,4 +44,15 @@ void	swap_points(t_point *p1, t_point *p2)
 	temp = p1->y;
 	p1->y = p2->y;
 	p2->y = temp;
+}
+
+t_point	new_point(int x, int y, int z, t_map *map)
+{
+	t_point	point;
+
+	point.x = x;
+	point.y = y;
+	point.z = z;
+	point.color = get_color(point.z, map);
+	return (point);
 }

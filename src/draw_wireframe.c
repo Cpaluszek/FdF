@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:51:30 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 12:55:41 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 13:48:35 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,7 @@ void	draw_line(t_fdf *fdf, t_point p1, t_point p2)
 	dy /= max;
 	while (check_bounds(p1) && ((int)(p1.x - p2.x) || (int)(p1.y - p2.y)))
 	{
-		//TODO: CHANGE COLOR
-		my_mlx_pixel_put(&fdf->data, p1.x, p1.y, WHITE);
+		my_mlx_pixel_put(&fdf->data, p1.x, p1.y, p1.color);
 		p1.x += dx;
 		p1.y += dy;
 	}

@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 08:55:38 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 13:45:59 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 13:54:42 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	project(t_fdf *fdf, t_point *p)
 	p->y -= fdf->map->length / 2;
 	p->x *= fdf->cam->zoom;
 	p->y *= fdf->cam->zoom;
-	rotate_z(p, fdf->cam->gamma);
+	rotate_z(p, fdf->cam->angle);
 	if (fdf->cam->projection == ISO)
 		isometric_projection(fdf, p);
 	else
@@ -50,13 +50,13 @@ void	parallel_projection(t_fdf *fdf, t_point *p)
 		- (p->z * fdf->cam->z_mult * fdf->cam->zoom / 50);
 }
 
-void	rotate_z(t_point *p, double gamma)
+void	rotate_z(t_point *p, float angle)
 {
 	float	x;
 	float	y;
 
 	x = p->x;
 	y = p->y;
-	p->x = (x * cos(gamma)) - (y * sin(gamma));
-	p->y = (x * sin(gamma)) + (y * cos(gamma));
+	p->x = (x * cos(angle)) - (y * sin(angle));
+	p->y = (x * sin(angle)) + (y * cos(angle));
 }
