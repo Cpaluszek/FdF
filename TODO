@@ -5,8 +5,6 @@ Todo:
     ☐ Check errors
       ✔ double space characters @done(22-12-03 10:03)
       ☐ Invalid map size
-    ARGS:
-      ☐ case_size_z  and z_siz  Wireframe
   MLX:
     ☐ Check for null on mlx_init ...
     ☐ Setup Hooks
@@ -19,7 +17,6 @@ Todo:
     ✔ lstclear - try with free instead of custom free @started(22-12-03 09:55) @done(22-12-03 09:56) @lasted(1m43s)
     ✔ Create `fdf_exit` function (free + return code) @done(22-12-03 10:19)
     ✔ separate mlx struct and functions @done(22-12-03 10:43)
-    ☐ update struct depending on reference
     ☐ manage errors -> return specific error codes
     ☐ check `perror` and `strerror`
     ☐ Look for const parameters
@@ -29,7 +26,6 @@ Todo:
   Optimize:
     ☐ Check for execution time
     ☐ `ft_lstaddback` is not optimal
-    ☐ Breisenham algo
     ☐ Makefile `optimize` rule
 	    ☐ Check `-march=nativ` flag for mlx compilation
 	    ☐ Compile with `-O` gcc flag (`-O3`)
