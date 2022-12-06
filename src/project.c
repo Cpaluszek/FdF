@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 08:55:38 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 10:28:56 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 10:42:56 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	project(t_fdf *fdf, t_point *p, int z)
 }
 
 // Isometric projection
+// TODO: adjust /50 division
 void	isometric_projection(t_fdf *fdf, t_point *p, int z)
 {
 	p->x = cos(0.523599f) * (p->x - p->y);

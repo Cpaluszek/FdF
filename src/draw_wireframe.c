@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:51:30 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 10:19:54 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 11:04:46 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	draw_wireframe(t_fdf *fdf)
 		while (j < fdf->map->width)
 		{
 			if (j < fdf->map->width - 1)
-				draw_line(fdf, (t_point){j, i}, (t_point){j + 1, i});
+				draw_line(fdf, fdf->map->points[i][j], fdf->map->points[i][j + 1]);
 			if (i < fdf->map->length - 1)
-				draw_line(fdf, (t_point){j, i}, (t_point){j, i + 1});
+				draw_line(fdf, fdf->map->points[i][j], fdf->map->points[i + 1][j]);
 			j++;
 		}
 		i++;
@@ -62,16 +62,12 @@ void	draw_line(t_fdf *fdf, t_point p1, t_point p2)
 	float	dx;
 	float	dy;
 	float	max;
-	int		z1;
-	int		z2;
 
-	z1 = fdf->map->grid[(int)p1.y][(int)p1.x];
-	z2 = fdf->map->grid[(int)p2.y][(int)p2.x];
-	project(fdf, &p1, z1);
-	project(fdf, &p2, z2);
+	project(fdf, &p1, p1.z);
+	project(fdf, &p2, p2.z);
 	if (!check_bounds(p1) && check_bounds(p2))
 		swap_points(&p1, &p2);
-	fdf->map->color = get_color(ft_max(z1, z2), fdf->map);
+	fdf->map->color = get_color(ft_max(p1.z, p2.z), fdf->map);
 	dx = p2.x - p1.x;
 	dy = p2.y - p1.y;
 	max = fmax(fabs(dx), fabs(dy));

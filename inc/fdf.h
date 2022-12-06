@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 10:27:52 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 11:06:43 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_point
 {
 	float	x;
 	float	y;
+	int		z;
 }	t_point;
 
 typedef enum e_projection
@@ -42,7 +43,7 @@ typedef struct s_map
 	int				max_z;
 	int				min_z;
 	unsigned int	color;
-	int				**grid;
+	t_point			**points;
 }	t_map;
 
 typedef struct s_camera
@@ -69,10 +70,12 @@ typedef struct s_fdf
 /*	Map Parsing	*/
 void	ft_parse_map(char *path, t_map *map, t_camera *cam);
 void	ft_read_map_file(int fd, t_list **map_content);
-void	ft_populate_grid(t_map *map, t_list *map_content, int i);
+int		**ft_populate_grid(t_map *map, t_list *map_content, int i);
 void	ft_check_extremums(t_map *map, int depth);
 void	ft_init_map(t_map *map, t_list *map_file, int height);
 void	set_default_cam_parameters(t_camera *cam, t_map *map);
+void	generate_points(t_map *map, t_list *map_file);
+t_point	new_point(int x, int y, int z);
 
 /*	Drawing	*/
 void	draw_wireframe(t_fdf *mlx);
@@ -110,7 +113,9 @@ void	change_projection(int key, t_fdf *fdf);
 void	reset_rotations(t_fdf *fdf);
 
 /*	Utils	*/
-void	ft_free_map(t_map *map);
+void	free_grid(int **grid, int size);
+void	free_map(t_map *map);
+// NOTE: ?????
 void	free_map_file_content(void *content);
 void	exit_fdf(t_fdf	*mlx);
 int		ft_min(int a, int b);
@@ -122,6 +127,6 @@ double	percent(int start, int end, int current);
 
 
 /*	Debug	*/
-void	ft_print_map(t_map *map);
+// void	ft_print_map(t_map *map);
 
 #endif

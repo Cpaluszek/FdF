@@ -24,6 +24,7 @@ Todo:
     ☐ check `perror` and `strerror`
     ☐ Look for const parameters
     ☐ Remove useless header inclusions
+    ☐ Uniform `ft` prefix
  
   Optimize:
     ☐ Check for execution time

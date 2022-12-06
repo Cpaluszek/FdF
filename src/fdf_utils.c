@@ -6,42 +6,55 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:00:44 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 10:25:26 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 11:11:53 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <math.h>
 
-void	ft_print_map(t_map *map)
-{
-	int	i;
-	int	j;
+// void	ft_print_map(t_map *map)
+// {
+// 	int	i;
+// 	int	j;
 
-	i = 0;
-	ft_printf("\n---------------- MAP ----------------\n");
-	while (i < map->length)
-	{
-		j = 0;
-		while (j < map->width)
-			ft_printf("%d ", map->grid[i][j++]);
-		ft_printf("\n");
-		i++;
-	}
-	ft_printf("\n");
-}
+// 	i = 0;
+// 	ft_printf("\n---------------- MAP ----------------\n");
+// 	while (i < map->length)
+// 	{
+// 		j = 0;
+// 		while (j < map->width)
+// 			ft_printf("%d ", map->grid[i][j++]);
+// 		ft_printf("\n");
+// 		i++;
+// 	}
+// 	ft_printf("\n");
+// }
 
 // Free the current grid and exit program
-void	ft_free_map(t_map *map)
+void	free_grid(int **grid, int size)
 {
 	int	i;
 
 	i = 0;
-	if (map->grid)
+	if (grid)
+	{
+		while (i < size)
+			free(grid[i++]);
+		free(grid);
+	}
+}
+
+void	free_map(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	if (map->points)
 	{
 		while (i < map->length)
-			free(map->grid[i++]);
-		free(map->grid);
+			free(map->points[i++]);
+		free(map->points);
 	}
 	free(map);
 }
