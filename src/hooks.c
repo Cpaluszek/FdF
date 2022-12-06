@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:47:10 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 17:32:44 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:50:33 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	setup_mlx_hooks(t_fdf *fdf)
 int	keyboard_hooks(int key, t_fdf *fdf)
 {
 	if (key == ESC)
-		exit_fdf(fdf);
+		exit_fdf(fdf, 0);
 	else if (key == SPACE)
 	{
 		set_default_cam_parameters(fdf->cam, fdf->map);
@@ -49,7 +49,7 @@ int	keyboard_hooks(int key, t_fdf *fdf)
 // Red cross clicked event
 int	button_hooks(t_fdf *mlx)
 {
-	exit_fdf(mlx);
+	exit_fdf(mlx, 0);
 	return (0);
 }
 

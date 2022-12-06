@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 17:37:12 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:59:14 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,13 @@ typedef struct s_fdf
 }	t_fdf;
 
 /*	Map Parsing	*/
-void	ft_parse_map(char *path, t_map *map, t_camera *cam);
-void	ft_read_map_file(int fd, t_list **map_content);
-int		**ft_populate_grid(t_map *map, t_list *map_content, int i);
+void	ft_parse_map(char *path, t_fdf *fdf);
+void	ft_read_map_file(t_fdf *fdf, int fd, t_list **map_content);
+int		**ft_populate_grid(t_fdf *fdf, t_list *map_content, int i);
 void	ft_check_extremums(t_map *map, int depth);
 void	ft_init_map(t_map *map, t_list *map_file, int height);
 void	set_default_cam_parameters(t_camera *cam, t_map *map);
-void	generate_points(t_map *map, t_list *map_file, int i);
+void	generate_points(t_fdf *fdf, t_list *map_file, int i);
 
 /*	Drawing	*/
 void	draw_wireframe(t_fdf *mlx);
@@ -85,7 +85,7 @@ void	rotate_z(t_point *p, float angle);
 void	print_menu(t_fdf *fdf);
 
 /*	Errors	*/
-void	manage_errors(int err_no, char *text);
+void	manage_errors(t_fdf *fdf, int err_no, char *text);
 
 /*	Events	*/
 void	setup_mlx_hooks(t_fdf *mlx);
@@ -103,7 +103,7 @@ void	change_projection(int key, t_fdf *fdf);
 /*	Utils	*/
 void	free_grid(int **grid, int size);
 void	free_map(t_map *map);
-void	exit_fdf(t_fdf	*mlx);
+void	exit_fdf(t_fdf	*mlx, int code);
 void	swap_points(t_point *p1, t_point *p2);
 t_point	new_point(int x, int y, int z, t_map *map);
 
@@ -116,7 +116,7 @@ void	set_palette_neon_space(t_map *map);
 void	set_palette_sweet(t_map *map);
 void	set_palette_hyperchill(t_map *map);
 void	set_palette_regal(t_map *map);
-int		get_light(int start, int end, double percentage);
+int		lerp(int start, int end, double percentage);
 int		lerp_color(t_point current, t_point start, t_point end, t_point delta);
 
 /*	Math Utils	*/

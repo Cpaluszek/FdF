@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:28:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 10:19:54 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:41:35 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-// Check if a point is inside window boundaries
+// Check if a point is inside window bounds
 int	check_bounds(const t_point p)
 {
 	if (p.x <= MENU_WIDTH && p.y <= MENU_HEIGHT)
