@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:51:30 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 17:18:24 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:21:01 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,3 @@ void	draw_line(t_fdf *fdf, t_point p1, t_point p2)
 		p1.y += delta.y;
 	}
 }
-

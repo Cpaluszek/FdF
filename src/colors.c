@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 08:53:35 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 17:18:12 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:20:56 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,4 +110,3 @@ int	lerp_color(t_point current, t_point start, t_point end, t_point delta)
 			end.color & 0xFF, percentage);
 	return ((red << 16) | (green << 8) | blue);
 }
-
