@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:51 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 11:11:20 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 11:16:41 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	main(int argc, char **argv)
 	mlx_loop(fdf.mlx);
 	return (0);
 }
-	//TODO: remove ft_print_map(fdf.map);
 
 void	exit_fdf(t_fdf	*fdf)
 {

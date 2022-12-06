@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:56:08 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 10:30:00 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 11:16:06 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,27 +48,6 @@ void	rotate(int key, t_fdf *fdf)
 		fdf->cam->gamma += .05f;
 	else if (key == NUM_PAD_3)
 		fdf->cam->gamma -= .05f;
-	draw_wireframe(fdf);
-}
-
-void	height_mult(int key, t_fdf *fdf)
-{
-	if (key == RIGHT_ANGLE_BRACKET)
-		fdf->cam->z_mult++;
-	else if (key == LEFT_ANGLE_BRACKET)
-		fdf->cam->z_mult--;
-	draw_wireframe(fdf);
-}
-
-void	change_projection(int key, t_fdf *fdf)
-{
-	if (key == KEY_I && fdf->cam->projection == PARALLEL)
-		fdf->cam->projection = ISO;
-	else if (key == KEY_P && fdf->cam->projection == ISO)
-		fdf->cam->projection = PARALLEL;
-	else
-		return ;
-	reset_rotations(fdf);
 	draw_wireframe(fdf);
 }
 

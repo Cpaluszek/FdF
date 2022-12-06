@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:55:07 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 11:12:35 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 11:18:36 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ int	**ft_populate_grid(t_map *map, t_list *map_file, int i)
 	int		**grid;
 	int		j;
 	char	*line;
-
 
 	grid = malloc(sizeof(int *) * map->length);
 	if (grid == NULL)
@@ -158,8 +157,7 @@ t_point	new_point(int x, int y, int z)
 	point.x = x;
 	point.y = y;
 	point.z = z;
-	// point.color = (map->colors_arr[index] == -1) ?
-	// 		get_default_color(point.z, map) : map->colors_arr[index];
 	return (point);
 }
-
+	// point.color = (map->colors_arr[index] == -1) ?
+	// 		get_default_color(point.z, map) : map->colors_arr[index];

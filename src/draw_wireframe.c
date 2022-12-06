@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:51:30 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 11:04:46 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 11:18:04 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,11 @@ void	draw_wireframe(t_fdf *fdf)
 		while (j < fdf->map->width)
 		{
 			if (j < fdf->map->width - 1)
-				draw_line(fdf, fdf->map->points[i][j], fdf->map->points[i][j + 1]);
+				draw_line(fdf, fdf->map->points[i][j],
+					fdf->map->points[i][j + 1]);
 			if (i < fdf->map->length - 1)
-				draw_line(fdf, fdf->map->points[i][j], fdf->map->points[i + 1][j]);
+				draw_line(fdf, fdf->map->points[i][j],
+					fdf->map->points[i + 1][j]);
 			j++;
 		}
 		i++;

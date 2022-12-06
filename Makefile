@@ -18,9 +18,11 @@ SRC			:=	fdf.c \
 				rotate.c \
 				fdf_errors.c \
 				fdf_utils.c \
+				free.c \
 				mlx_utils.c \
 				hooks.c \
 				controls_utils.c \
+				controls_utils2.c \
 				menu.c \
 				colors.c \
 				math_utils.c

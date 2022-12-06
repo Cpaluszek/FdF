@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 11:06:43 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 11:15:00 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,6 @@ double	deg_to_rad(int angle);
 void	swap_points(t_point *p1, t_point *p2);
 int		get_color(int z, t_map *map);
 double	percent(int start, int end, int current);
-
 
 /*	Debug	*/
 // void	ft_print_map(t_map *map);

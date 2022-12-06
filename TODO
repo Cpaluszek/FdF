@@ -39,6 +39,5 @@ Final Tests:
   ☐ Execution time
   ☐ Random map parsing
   ☐ Remove debug functions
-    ☐ `ft_print_map`
   ☐ Remove all comments
 
