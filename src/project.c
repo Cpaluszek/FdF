@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 08:55:38 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 13:54:42 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 14:02:39 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	parallel_projection(t_fdf *fdf, t_point *p)
 		- (p->z * fdf->cam->z_mult * fdf->cam->zoom / 50);
 }
 
+// Todo: try to rotate around screen center
 void	rotate_z(t_point *p, float angle)
 {
 	float	x;

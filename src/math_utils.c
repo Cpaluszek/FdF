@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:50:53 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 10:00:01 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 14:24:27 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,16 @@ int	ft_max(int a, int b)
 double	deg_to_rad(int angle)
 {
 	return (angle * 3.14159265f / 180.0f);
+}
+
+float	percent(int start, int end, int current)
+{
+	float	placement;
+	float	distance;
+
+	placement = current - start;
+	distance = end - start;
+	if (distance == 0)
+		return (1);
+	return (placement / distance);
 }

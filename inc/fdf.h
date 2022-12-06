@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 13:55:01 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 14:25:19 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,15 +107,15 @@ void	change_projection(int key, t_fdf *fdf);
 /*	Utils	*/
 void	free_grid(int **grid, int size);
 void	free_map(t_map *map);
-// NOTE: ?????
-void	free_map_file_content(void *content);
 void	exit_fdf(t_fdf	*mlx);
-int		ft_min(int a, int b);
-int		ft_max(int a, int b);
-double	deg_to_rad(int angle);
 void	swap_points(t_point *p1, t_point *p2);
 int		get_color(int z, t_map *map);
-double	percent(int start, int end, int current);
+
+/*	Math Utils	*/
+int		ft_min(int a, int b);
+int		ft_max(int a, int b);
+float	percent(int start, int end, int current);
+double	deg_to_rad(int angle);
 
 /*	Debug	*/
 // void	ft_print_map(t_map *map);

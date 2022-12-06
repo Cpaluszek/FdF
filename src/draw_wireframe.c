@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:51:30 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 13:48:35 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 14:24:30 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	draw_line(t_fdf *fdf, t_point p1, t_point p2)
 	project(fdf, &p2);
 	if (!check_bounds(p1) && check_bounds(p2))
 		swap_points(&p1, &p2);
-	// fdf->map->color = get_color(ft_max(p1.z, p2.z), fdf->map);
 	dx = p2.x - p1.x;
 	dy = p2.y - p1.y;
 	max = fmax(fabs(dx), fabs(dy));
@@ -81,16 +80,4 @@ void	draw_line(t_fdf *fdf, t_point p1, t_point p2)
 		p1.x += dx;
 		p1.y += dy;
 	}
-}
-
-double	percent(int start, int end, int current)
-{
-	double	placement;
-	double	distance;
-
-	placement = current - start;
-	distance = end - start;
-	if (distance == 0)
-		return (1);
-	return (placement / distance);
 }
