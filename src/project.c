@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 08:55:38 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 12:40:24 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 12:43:56 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	parallel_projection(t_fdf *fdf, t_point *p)
 
 	x = p->x;
 	y = p->y;
-	p->x = y + cos(0.523599f) * x;
-	p->y = sin(0.523599f) * x \
+	p->x = y + cos(0.8f) * x;
+	p->y = sin(0.8f) * x
 		- (p->z * fdf->cam->z_mult * fdf->cam->zoom / 50);
 }
