@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 12:36:17 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 12:42:00 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ typedef enum e_projection
 	PARALLEL
 }	t_projection;
 
-// Note: use vectors for height-width / min-max
-// Note: sub structure for position / camera settings
 // Note: camera auto scroll on specific key press ?
 typedef struct s_map
 {
