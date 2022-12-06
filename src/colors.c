@@ -6,12 +6,13 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 08:53:35 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 17:48:55 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 18:22:02 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+// Assigns color to point depending on z value
 int	get_color(int z, t_map *map)
 {
 	double	percentage;
@@ -39,6 +40,8 @@ int	get_color(int z, t_map *map)
 		return (map->colors[9]);
 }
 
+// Switch color palette presets:
+// Update map->colors array
 void	pick_color_palette(int key, t_fdf *fdf)
 {
 	if (key == KEY_1)
@@ -55,6 +58,7 @@ void	pick_color_palette(int key, t_fdf *fdf)
 	draw_wireframe(fdf);
 }
 
+// Reassigns color to points with map->color[]
 void	update_points_colors(t_fdf *fdf)
 {
 	int	i;
@@ -74,21 +78,15 @@ void	update_points_colors(t_fdf *fdf)
 	}
 }
 
-/*
-** Get light for color. Result depends on point position.
-** This function is needed to create linear gradient.
-*/
-
-int	lerp(int start, int end, double percentage)
+// Get light for color depending on point position
+static int	lerp_light(int start, int end, double percentage)
 {
 	return ((int)((1 - percentage) * start + percentage * end));
 }
 
-/*
-** Get color. Result depends on point position.
-** This function is needed to create linear gradient.
-*/
 
+// Get color between two points
+// This function creates linear gradient
 int	lerp_color(t_point current, t_point start, t_point end, t_point delta)
 {
 	int		red;
@@ -102,11 +100,11 @@ int	lerp_color(t_point current, t_point start, t_point end, t_point delta)
 		percentage = percent(start.x, end.x, current.x);
 	else
 		percentage = percent(start.y, end.y, current.y);
-	red = lerp((start.color >> 16) & 0xFF,
+	red = lerp_light((start.color >> 16) & 0xFF,
 			(end.color >> 16) & 0xFF, percentage);
-	green = lerp((start.color >> 8) & 0xFF,
+	green = lerp_light((start.color >> 8) & 0xFF,
 			(end.color >> 8) & 0xFF, percentage);
-	blue = lerp(start.color & 0xFF,
+	blue = lerp_light(start.color & 0xFF,
 			end.color & 0xFF, percentage);
 	return ((red << 16) | (green << 8) | blue);
 }

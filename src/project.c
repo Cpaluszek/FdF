@@ -6,14 +6,15 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 08:55:38 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 17:25:26 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 18:32:55 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <math.h>
 
-// #include <stdio.h>
+// Project point in 3D space
+// Apply zoom, translation, rotation and projection
 void	project(t_fdf *fdf, t_point *p)
 {
 	p->x -= fdf->map->width / 2;
@@ -29,8 +30,8 @@ void	project(t_fdf *fdf, t_point *p)
 	p->y += fdf->cam->shift_y;
 }
 
-// Isometric projection
 // TODO: adjust /50 division
+// Isometric projection
 void	isometric_projection(t_fdf *fdf, t_point *p)
 {
 	p->x = cos(0.8f) * (p->x - p->y);
@@ -39,6 +40,7 @@ void	isometric_projection(t_fdf *fdf, t_point *p)
 }
 
 // TODO; try conic projection
+// Parallel projection
 void	parallel_projection(t_fdf *fdf, t_point *p)
 {
 	float	x;
@@ -52,6 +54,7 @@ void	parallel_projection(t_fdf *fdf, t_point *p)
 }
 
 // Todo: try to rotate around screen center
+// Rotation around z axis
 void	rotate_z(t_point *p, float angle)
 {
 	float	x;

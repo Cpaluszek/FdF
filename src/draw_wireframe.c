@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:51:30 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 17:32:22 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 18:30:43 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "colors.h"
 #include <math.h>
 
+// Fill the image with background color
+// A second color is used for menu background
 static void	draw_background(t_fdf *fdf)
 {
 	int	*image;
@@ -31,6 +33,9 @@ static void	draw_background(t_fdf *fdf)
 	}
 }
 
+// Generate render
+//  - Draw background
+// 	- Draw lines between each neighbouring points
 void	draw_wireframe(t_fdf *fdf)
 {
 	int	i;
@@ -57,6 +62,8 @@ void	draw_wireframe(t_fdf *fdf)
 	print_menu(fdf);
 }
 
+// Bresenham algorithm to draw a line between two points
+// Create a gradient of color between two points using lerp_color()
 void	draw_line(t_fdf *fdf, t_point p1, t_point p2)
 {
 	t_point	delta;

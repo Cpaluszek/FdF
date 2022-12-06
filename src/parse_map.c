@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:55:07 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 18:00:30 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 18:31:39 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ int	**ft_populate_grid(t_fdf *fdf, t_list *map_file, int i)
 	return (grid);
 }
 
+// Generate map 2D t_point array
 void	generate_points(t_fdf *fdf, t_list *map_file, int i)
 {
 	int	**grid;

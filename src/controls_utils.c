@@ -6,12 +6,13 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:56:08 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 13:57:28 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 18:22:57 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+// Update zoom settings
 void	zoom(int key, t_fdf *fdf)
 {
 	if (key == NUM_PAD_PLUS || key == SCROLL_UP)
@@ -21,6 +22,7 @@ void	zoom(int key, t_fdf *fdf)
 	draw_wireframe(fdf);
 }
 
+// Update translation settings
 void	move(int key, t_fdf *fdf)
 {
 	if (key == KEY_W)
@@ -34,6 +36,7 @@ void	move(int key, t_fdf *fdf)
 	draw_wireframe(fdf);
 }
 
+// Update rotation settings
 void	rotate(int key, t_fdf *fdf)
 {
 	if (key == KEY_E)
@@ -43,6 +46,7 @@ void	rotate(int key, t_fdf *fdf)
 	draw_wireframe(fdf);
 }
 
+// Update height modifier setttings
 void	height_mult(int key, t_fdf *fdf)
 {
 	if (key == RIGHT_ANGLE_BRACKET)
@@ -52,6 +56,7 @@ void	height_mult(int key, t_fdf *fdf)
 	draw_wireframe(fdf);
 }
 
+// Change projection type
 void	change_projection(int key, t_fdf *fdf)
 {
 	if (key == KEY_I && fdf->cam->projection == PARALLEL)

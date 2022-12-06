@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 13:10:08 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 16:00:51 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 18:31:03 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "colors.h"
 
 // Todo: polish
+// Print menu information on top left corner
 void	print_menu(t_fdf *fdf)
 {
 	int		y;

@@ -6,12 +6,13 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 11:19:13 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 17:30:53 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 18:28:44 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+// Free 2D int array
 void	free_grid(int **grid, int size)
 {
 	int	i;
@@ -25,6 +26,7 @@ void	free_grid(int **grid, int size)
 	}
 }
 
+// Free map structure and 2D t_point arrary
 void	free_map(t_map *map)
 {
 	int	i;

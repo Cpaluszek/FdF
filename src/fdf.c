@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:51 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 17:59:35 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 18:28:03 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
+// Exit program and free allocations
 void	exit_fdf(t_fdf *fdf, int code)
 {
 	if (!fdf)

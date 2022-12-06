@@ -6,13 +6,14 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 15:09:01 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 17:20:51 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 18:22:13 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "colors.h"
 
+// Set color palette presets in t_map struct
 void	set_palette_soapy(t_map *map)
 {
 	map->colors[0] = COLOR_P0_0;

@@ -6,13 +6,16 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:47:10 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 17:50:33 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 18:30:20 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 // Link events to actions
+// Keyboard events
+// Mouse events
+// Window frame cross clicked
 void	setup_mlx_hooks(t_fdf *fdf)
 {
 	mlx_hook(fdf->win, ON_KEYDOWN, 1L << 0, keyboard_hooks, fdf);
@@ -21,6 +24,7 @@ void	setup_mlx_hooks(t_fdf *fdf)
 }
 
 // NOTE: define increments in header
+// Detect key press and call needed function
 int	keyboard_hooks(int key, t_fdf *fdf)
 {
 	if (key == ESC)
@@ -46,13 +50,14 @@ int	keyboard_hooks(int key, t_fdf *fdf)
 	return (0);
 }
 
-// Red cross clicked event
+// Frame cross click
 int	button_hooks(t_fdf *mlx)
 {
 	exit_fdf(mlx, 0);
 	return (0);
 }
 
+// Mouse scroll
 int	mouse_hooks(int key, int x, int y, t_fdf *fdf)
 {
 	(void) x;
