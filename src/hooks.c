@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:47:10 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 09:54:00 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 10:29:20 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	keyboard_hooks(int key, t_fdf *fdf)
 		exit_fdf(fdf);
 	else if (key == SPACE)
 	{
-		set_default_map_parameters(fdf->map);
+		set_default_cam_parameters(fdf->cam, fdf->map);
 		draw_wireframe(fdf);
 	}
 	else if (key == RIGHT_ANGLE_BRACKET || key == LEFT_ANGLE_BRACKET)

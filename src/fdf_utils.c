@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:00:44 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 09:59:19 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 10:25:26 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,17 @@ void	ft_free_map(t_map *map)
 	free(map);
 }
 
-void	set_default_map_parameters(t_map *map)
+void	set_default_cam_parameters(t_camera *cam, t_map *map)
 {
-	map->alpha = 0;
-	map->beta = 0;
-	map->gamma = 0;
-	map->zoom = ft_min((WIN_WIDTH - MENU_WIDTH) / map->width, \
+	cam->alpha = 0;
+	cam->beta = 0;
+	cam->gamma = 0;
+	cam->zoom = ft_min((WIN_WIDTH - MENU_WIDTH) / map->width, \
 		WIN_HEIGHT / map->length);
-	map->shift_x = WIN_WIDTH / 2;
-	map->shift_y = WIN_HEIGHT / 2;
-	map->z_mult = INITIAL_HEIGHT_MULT;
-	map->color = WHITE;
-	map->projection = ISO;
+	cam->shift_x = WIN_WIDTH / 2;
+	cam->shift_y = WIN_HEIGHT / 2;
+	cam->z_mult = INITIAL_HEIGHT_MULT;
+	cam->projection = ISO;
 }
 
 void	ft_check_extremums(t_map *map, int depth)
@@ -68,7 +67,8 @@ void	ft_check_extremums(t_map *map, int depth)
 		map->min_z = depth;
 }
 
-void	swap_points(t_vector *p1, t_vector *p2)
+// TODO. swap other params
+void	swap_points(t_point *p1, t_point *p2)
 {
 	float	temp;
 

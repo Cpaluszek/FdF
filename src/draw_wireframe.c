@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:51:30 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 09:54:49 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 10:19:54 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	draw_wireframe(t_fdf *fdf)
 		while (j < fdf->map->width)
 		{
 			if (j < fdf->map->width - 1)
-				draw_line(fdf, (t_vector){j, i}, (t_vector){j + 1, i});
+				draw_line(fdf, (t_point){j, i}, (t_point){j + 1, i});
 			if (i < fdf->map->length - 1)
-				draw_line(fdf, (t_vector){j, i}, (t_vector){j, i + 1});
+				draw_line(fdf, (t_point){j, i}, (t_point){j, i + 1});
 			j++;
 		}
 		i++;
@@ -57,7 +57,7 @@ void	draw_wireframe(t_fdf *fdf)
 // Bresenham line generation
 // 	- line is drawn from left to right
 // Todo: color gradient
-void	draw_line(t_fdf *fdf, t_vector p1, t_vector p2)
+void	draw_line(t_fdf *fdf, t_point p1, t_point p2)
 {
 	float	dx;
 	float	dy;

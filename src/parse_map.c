@@ -6,14 +6,14 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:55:07 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 09:55:43 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 10:28:19 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 // Parse file content into map structure
-void	ft_parse_map(char *path, t_map *map)
+void	ft_parse_map(char *path, t_map *map, t_camera *cam)
 {
 	t_list	*map_file;
 	int		fd;
@@ -25,7 +25,7 @@ void	ft_parse_map(char *path, t_map *map)
 	ft_init_map(map, map_file, ft_lstsize(map_file));
 	map->min_z = INT_MAX;
 	map->max_z = INT_MIN;
-	set_default_map_parameters(map);
+	set_default_cam_parameters(cam, map);
 	ft_populate_grid(map, map_file, -1);
 	ft_lstclear(&map_file, &free);
 	if (close(fd) == -1)
