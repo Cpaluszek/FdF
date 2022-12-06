@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 12:42:00 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 13:44:30 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@
 
 # define INITIAL_ZOOM			50
 # define INITIAL_ANGLE			45
-# define INITIAL_HEIGHT_MULT	2
+# define INITIAL_HEIGHT_MULT	1
 
 typedef struct s_point
 {
-	float	x;
-	float	y;
-	int		z;
+	float			x;
+	float			y;
+	int				z;
+	unsigned int	color;
 }	t_point;
 
 typedef enum e_projection
@@ -73,7 +74,7 @@ void	ft_check_extremums(t_map *map, int depth);
 void	ft_init_map(t_map *map, t_list *map_file, int height);
 void	set_default_cam_parameters(t_camera *cam, t_map *map);
 void	generate_points(t_map *map, t_list *map_file);
-t_point	new_point(int x, int y, int z);
+t_point	new_point(int x, int y, int z, t_map *map);
 
 /*	Drawing	*/
 void	draw_wireframe(t_fdf *mlx);

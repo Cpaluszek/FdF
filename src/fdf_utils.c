@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:00:44 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 11:34:19 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 13:25:58 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	set_default_cam_parameters(t_camera *cam, t_map *map)
 	cam->gamma = 0;
 	cam->zoom = ft_min((WIN_WIDTH - MENU_WIDTH) / map->width, \
 		WIN_HEIGHT / map->length);
-	cam->shift_x = WIN_WIDTH / 2;
+	cam->shift_x = WIN_WIDTH / 2 + MENU_WIDTH / 6;
 	cam->shift_y = WIN_HEIGHT / 2;
 	cam->z_mult = INITIAL_HEIGHT_MULT;
 	cam->projection = ISO;

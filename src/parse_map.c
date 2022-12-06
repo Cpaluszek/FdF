@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:55:07 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 11:18:36 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 12:51:25 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ void	generate_points(t_map *map, t_list *map_file)
 		j = 0;
 		while (j < map->width)
 		{
-			map->points[i][j] = new_point(j, i, grid[i][j]);
+			map->points[i][j] = new_point(j, i, grid[i][j], map);
 			j++;
 		}
 		i++;
@@ -150,7 +150,7 @@ void	generate_points(t_map *map, t_list *map_file)
 }
 
 //TODO: colors
-t_point	new_point(int x, int y, int z)
+t_point	new_point(int x, int y, int z, t_map *map)
 {
 	t_point	point;
 
@@ -158,6 +158,5 @@ t_point	new_point(int x, int y, int z)
 	point.y = y;
 	point.z = z;
 	return (point);
+	point.color = get_color(point.z, map);
 }
-	// point.color = (map->colors_arr[index] == -1) ?
-	// 		get_default_color(point.z, map) : map->colors_arr[index];
