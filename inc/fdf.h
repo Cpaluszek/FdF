@@ -6,17 +6,17 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 17:18:45 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:24:37 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
-# include "libft.h"
-# include "mlx_utils.h"
 # define INITIAL_ZOOM			50
 # define INITIAL_ANGLE			45
 # define INITIAL_HEIGHT_MULT	2
+# include "libft.h"
+# include "mlx_utils.h"
 
 typedef struct s_point
 {

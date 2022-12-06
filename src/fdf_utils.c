@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:00:44 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 15:16:19 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:29:45 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,27 @@ void	ft_check_extremums(t_map *map, int depth)
 		map->min_z = depth;
 }
 
-// TODO. swap other params
-void	swap_points(t_point *p1, t_point *p2)
+static void	swap_floats(float *a, float *b)
 {
 	float	temp;
 
-	temp = p1->x;
-	p1->x = p2->x;
-	p2->x = temp;
-	temp = p1->y;
-	p1->y = p2->y;
-	p2->y = temp;
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+void	swap_points(t_point *p1, t_point *p2)
+{
+	int	temp;
+
+	swap_floats(&p1->x, &p2->x);
+	swap_floats(&p1->y, &p2->y);
+	temp = p1->color;
+	p1->color = p2->color;
+	p2->color = temp;
+	temp = p1->z;
+	p1->z = p2->z;
+	p2->z = temp;
 }
 
 t_point	new_point(int x, int y, int z, t_map *map)

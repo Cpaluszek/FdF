@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 08:55:38 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 17:20:46 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:25:26 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	isometric_projection(t_fdf *fdf, t_point *p)
 		- (p->z * fdf->cam->z_mult * fdf->cam->zoom / 50);
 }
 
+// TODO; try conic projection
 void	parallel_projection(t_fdf *fdf, t_point *p)
 {
 	float	x;
