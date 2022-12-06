@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:47:10 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 15:16:33 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:32:44 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	setup_mlx_hooks(t_fdf *fdf)
 	mlx_mouse_hook(fdf->win, mouse_hooks, fdf);
 }
 
-//TODO: remove printf on keys
 // NOTE: define increments in header
 int	keyboard_hooks(int key, t_fdf *fdf)
 {
@@ -44,8 +43,6 @@ int	keyboard_hooks(int key, t_fdf *fdf)
 	else if (key == KEY_1 || key == KEY_2 || key == KEY_3
 		|| key == KEY_4 || key == KEY_5)
 		pick_color_palette(key, fdf);
-	else
-		ft_printf("key = %d\n", key);
 	return (0);
 }
 
@@ -62,7 +59,5 @@ int	mouse_hooks(int key, int x, int y, t_fdf *fdf)
 	(void) y;
 	if (key == SCROLL_DOWN || key == SCROLL_UP)
 		zoom(key, fdf);
-	else
-		ft_printf("key = %d\n", key);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:51:30 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 17:21:01 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 17:32:22 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	draw_wireframe(t_fdf *fdf)
 	print_menu(fdf);
 }
 
-// Todo: color gradient
 void	draw_line(t_fdf *fdf, t_point p1, t_point p2)
 {
 	t_point	delta;
