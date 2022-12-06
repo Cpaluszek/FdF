@@ -14,12 +14,14 @@ SRC_DIR		:=	src/
 SRC			:=	fdf.c \
 				parse_map.c \
 				draw_wireframe.c \
+				project.c \
 				fdf_errors.c \
 				fdf_utils.c \
 				mlx_utils.c \
 				hooks.c \
 				controls_utils.c \
 				menu.c \
+				colors.c \
 				math_utils.c
 
 LIBFT_A		:=	lib/libft/libft.a

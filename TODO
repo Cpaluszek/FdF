@@ -23,6 +23,7 @@ Todo:
     ☐ manage errors -> return specific error codes
     ☐ check `perror` and `strerror`
     ☐ Look for const parameters
+    ☐ Remove useless header inclusions
  
   Optimize:
     ☐ Check for execution time
