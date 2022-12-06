@@ -6,17 +6,16 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:58:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 17:52:16 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/06 18:01:39 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-// Todo: manage error codes (return -1 everytime something is wrong ?)
-/* Print error message and interrupt program
-	- 0 -> no arguments
-	- 1 -> file not found
-	- 2 -> unable to close file
-	- 3 -> allocation error
+/* Print error message and call fdf_exit
+	- 1 -> no arguments
+	- 2 -> file not found
+	- 3 -> unable to close file
+	- 4 -> allocation error
 */
 void	manage_errors(t_fdf *fdf, int err_no, char *text)
 {
