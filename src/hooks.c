@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:47:10 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/07 09:31:45 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/07 10:47:54 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	setup_mlx_hooks(t_fdf *fdf)
 	mlx_mouse_hook(fdf->win, mouse_hooks, fdf);
 }
 
-// NOTE: define increments in header
 // Detect key press and call needed function
 static int	keyboard_hooks(int key, t_fdf *fdf)
 {

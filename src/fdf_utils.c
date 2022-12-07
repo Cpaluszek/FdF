@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:00:44 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/07 09:30:52 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/07 10:47:37 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ static void	swap_floats(float *a, float *b)
 	*b = temp;
 }
 
-// NOTE: ?????????????????
 // Color a specific pixel on image
+// Mimic the the behaviour of mlx_pixel_put, but faster
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;

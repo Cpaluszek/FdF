@@ -6,19 +6,24 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 12:56:08 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 18:22:57 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/07 10:50:44 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#define ZOOM_INC_FACTOR	1.05f
+#define ZOOM_DEC_FACTOR	0.95f
+#define ANGLE_INC		0.01f
+#define TRANSLATION_INC	10
+#define HEIGHT_MULT_INC	1
 
 // Update zoom settings
 void	zoom(int key, t_fdf *fdf)
 {
 	if (key == NUM_PAD_PLUS || key == SCROLL_UP)
-		fdf->cam->zoom *= 1.05f;
+		fdf->cam->zoom *= ZOOM_INC_FACTOR;
 	else if (key == NUM_PAD_MINUS || key == SCROLL_DOWN)
-		fdf->cam->zoom *= 0.95f;
+		fdf->cam->zoom *= ZOOM_DEC_FACTOR;
 	draw_wireframe(fdf);
 }
 
@@ -26,13 +31,13 @@ void	zoom(int key, t_fdf *fdf)
 void	move(int key, t_fdf *fdf)
 {
 	if (key == KEY_W)
-		fdf->cam->shift_y += 10;
+		fdf->cam->shift_y += TRANSLATION_INC;
 	else if (key == KEY_A)
-		fdf->cam->shift_x += 10;
+		fdf->cam->shift_x += TRANSLATION_INC;
 	else if (key == KEY_S)
-		fdf->cam->shift_y -= 10;
+		fdf->cam->shift_y -= TRANSLATION_INC;
 	else if (key == KEY_D)
-		fdf->cam->shift_x -= 10;
+		fdf->cam->shift_x -= TRANSLATION_INC;
 	draw_wireframe(fdf);
 }
 
@@ -40,9 +45,9 @@ void	move(int key, t_fdf *fdf)
 void	rotate(int key, t_fdf *fdf)
 {
 	if (key == KEY_E)
-		fdf->cam->angle += .01f;
+		fdf->cam->angle += ANGLE_INC;
 	else if (key == KEY_Q)
-		fdf->cam->angle -= .01f;
+		fdf->cam->angle -= ANGLE_INC;
 	draw_wireframe(fdf);
 }
 
@@ -50,9 +55,9 @@ void	rotate(int key, t_fdf *fdf)
 void	height_mult(int key, t_fdf *fdf)
 {
 	if (key == RIGHT_ANGLE_BRACKET)
-		fdf->cam->z_mult++;
+		fdf->cam->z_mult += HEIGHT_MULT_INC;
 	else if (key == LEFT_ANGLE_BRACKET)
-		fdf->cam->z_mult--;
+		fdf->cam->z_mult -= HEIGHT_MULT_INC;
 	draw_wireframe(fdf);
 }
 
