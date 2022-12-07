@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:00:44 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 18:27:48 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/07 09:09:03 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,6 @@ void	set_default_cam_parameters(t_camera *cam, t_map *map)
 	cam->z_mult = INITIAL_HEIGHT_MULT;
 	cam->projection = ISO;
 	set_palette_soapy(map);
-}
-
-// Update map maximum and minimm
-void	ft_check_extremums(t_map *map, int depth)
-{
-	if (depth > map->max_z)
-		map->max_z = depth;
-	if (depth < map->min_z)
-		map->min_z = depth;
 }
 
 // Swap two float value
@@ -58,16 +49,4 @@ void	swap_points(t_point *p1, t_point *p2)
 	temp = p1->z;
 	p1->z = p2->z;
 	p2->z = temp;
-}
-
-// Create a new point structure and pick color depending on its z value
-t_point	new_point(int x, int y, int z, t_map *map)
-{
-	t_point	point;
-
-	point.x = x;
-	point.y = y;
-	point.z = z;
-	point.color = get_color(point.z, map);
-	return (point);
 }

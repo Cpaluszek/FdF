@@ -13,6 +13,7 @@ HEADERS		:= $(addprefix $(INC_DIR), $(INC))
 SRC_DIR		:=	src/
 SRC			:=	fdf.c \
 				parse_map.c \
+				parsing_utils.c \
 				draw_wireframe.c \
 				project.c \
 				fdf_errors.c \
