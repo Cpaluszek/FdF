@@ -26,9 +26,10 @@ SRC			:=	fdf.c \
 				color_palettes.c \
 				math_utils.c
 
-LIBFT_A		:=	lib/libft/libft.a
-LIBFT_DIR	:=	lib/libft/
-LIBFT_INC	:= 	lib/libft/inc/
+LIB_DIR		:=	lib/
+LIBFT_DIR	:=	$(LIB_DIR)libft/
+LIBFT_A		:=	$(LIBFT_DIR)libft.a
+LIBFT_INC	:= 	$(LIBFT_DIR)inc/
 
 OBJ_DIR		:=	build/
 OBJ			:=	$(SRC:%.c=$(OBJ_DIR)%.o)
@@ -52,21 +53,25 @@ _PURPLE		:=	\x1b[35m
 _CYAN		:=	\x1b[36m
 _WHITE		:=	\x1b[37m
 
+MLX_DIR	=	lib/minilibx_macos/
+MLX_A	=	$(MLX_DIR)libmlx.a
+MLX_FLAG = -lm -framework OpenGL -framework AppKit
+
 #########################
 # 	CROSS_PLATFORM		#
 #########################
 
-UNAME_S		:= $(shell uname -s)
-	ifeq ($(UNAME_S),Linux)
-		MLX_FLAG = -lm -L/usr/lib -lXext -lX11 -lz
-		MLX_DIR	=	lib/minilibx-linux/
-		MLX_A	=	lib/minilibx-linux/libmlx.a
-	endif
-	ifeq ($(UNAME_S),Darwin)
-		MLX_DIR	=	lib/minilibx_macos/
-		MLX_A	=	lib/minilibx_macos/libmlx.a
-		MLX_FLAG = -lm -framework OpenGL -framework AppKit
-	endif
+#UNAME_S		:= $(shell uname -s)
+#ifeq ($(UNAME_S),Linux)
+#MLX_FLAG = -lm -L/usr/lib -lXext -lX11 -lz
+#MLX_DIR	=	lib/minilibx-linux/
+#MLX_A	=	$(MLX_DIR)libmlx.a
+#endif
+#ifeq ($(UNAME_S),Darwin)
+#MLX_DIR	=	lib/minilibx_macos/
+#MLX_A	=	$(MLX_DIR)libmlx.a
+#MLX_FLAG = -lm -framework OpenGL -framework AppKit
+#endif
 #########################
 # 		RULES			#
 #########################
@@ -74,7 +79,7 @@ UNAME_S		:= $(shell uname -s)
 all: build_libft $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT_A) $(MLX_A) 
-	@$(CC) $(CC_FLAGS) $(DEBUG_FLAG) $(OBJ) $(LIBFT_A) $(MLX_A) $(MLX_FLAG) -o $@ 
+	@$(CC) $(CC_FLAGS) $(OBJ) $(LIBFT_A) $(MLX_A) $(MLX_FLAG) -o $@ 
 	@echo "> FdF Done!\n"
 	
 # Libft Makefile
@@ -89,11 +94,12 @@ $(MLX_A): $(MLX_DIR)
 $(OBJ): $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(LIBFT_DIR) $(HEADERS) 
 	@mkdir -p $(@D)
 	@echo "$(_GREEN)compiling: $<$(_END)"
-	@$(CC) $(CC_FLAGS) $(DEBUG_FLAG) -I$(INC_DIR) -I$(LIBFT_INC) -I$(MLX_DIR) -c $< -o $@
+	@$(CC) $(CC_FLAGS) -I$(INC_DIR) -I$(LIBFT_INC) -I$(MLX_DIR) -c $< -o $@
 
 # clean commands
 clean:
 	@$(MAKE) clean -C $(LIBFT_DIR)
+	@$(MAKE) clean -C $(MLX_DIR)
 	@rm -rf $(OBJ_DIR)
 
 fclean: clean

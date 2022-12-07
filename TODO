@@ -4,21 +4,8 @@ Todo:
     ✔ lstclear - try with free instead of custom free @started(22-12-03 09:55) @done(22-12-03 09:56) @lasted(1m43s)
     ✔ Create `fdf_exit` function (free + return code) @done(22-12-03 10:19)
     ✔ separate mlx struct and functions @done(22-12-03 10:43)
-    ☐ Look for const parameters
-    ☐ Remove useless header inclusions
-    ☐ Uniform `ft` prefix
  
   Optimize:
-    ☐ Check for execution time
-    ☐ `ft_lstaddback` is not optimal
     ☐ Makefile `optimize` rule
 	    ☐ Check `-march=nativ` flag for mlx compilation
 	    ☐ Compile with `-O` gcc flag (`-O3`)
-
-Final Tests:
-  ☐ Leaks
-  ☐ Execution time
-  ☐ Random map parsing
-  ☐ Remove debug functions
-  ☐ Remove all comments
-
