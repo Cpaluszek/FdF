@@ -6,14 +6,14 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:08:14 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/07 09:10:57 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/07 11:01:47 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 // Update map maximum and minimm
-void	ft_check_extremums(t_map *map, int depth)
+void	check_extremums(t_map *map, int depth)
 {
 	if (depth > map->max_z)
 		map->max_z = depth;

@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:51 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/07 08:57:08 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/07 11:01:38 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	fdf.cam = malloc(sizeof(t_camera));
 	if (fdf.map == NULL)
 		manage_errors(&fdf, 4, "map allocation failed");
-	ft_parse_map(argv[1], &fdf);
+	parse_map(argv[1], &fdf);
 	fdf.mlx = mlx_init();
 	fdf.win = mlx_new_window(fdf.mlx, WIN_WIDTH, WIN_HEIGHT, WIN_NAME);
 	setup_mlx_hooks(&fdf);

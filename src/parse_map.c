@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:55:07 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/07 10:45:49 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/07 11:01:47 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	**ft_populate_grid(t_fdf *fdf, t_list *map_file, int i);
 static int	*get_row(t_fdf *fdf, t_list *map_file);
 
 // Parse file content into map structure
-void	ft_parse_map(char *path, t_fdf *fdf)
+void	parse_map(char *path, t_fdf *fdf)
 {
 	t_list	*map_file;
 	int		fd;
@@ -98,7 +98,7 @@ static int	*get_row(t_fdf *fdf, t_list *map_file)
 	while (++j < fdf->map->width)
 	{
 		row[j] = ft_atoi(line);
-		ft_check_extremums(fdf->map, row[j]);
+		check_extremums(fdf->map, row[j]);
 		while (*line && !ft_isspace(*line))
 			line++;
 		while (*line && ft_isspace(*line))
