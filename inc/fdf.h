@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:20 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 18:18:58 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/07 08:58:14 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_parse_map(char *path, t_fdf *fdf);
 void	ft_read_map_file(t_fdf *fdf, int fd, t_list **map_content);
 int		**ft_populate_grid(t_fdf *fdf, t_list *map_content, int i);
 void	ft_check_extremums(t_map *map, int depth);
-void	ft_init_map(t_map *map, t_list *map_file, int height);
+void	get_map_size(t_map *map, t_list *map_file, int height);
 void	set_default_cam_parameters(t_camera *cam, t_map *map);
 void	generate_points(t_fdf *fdf, t_list *map_file, int i);
 

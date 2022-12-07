@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:55:07 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 18:31:39 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/07 09:01:17 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,23 @@ void	ft_parse_map(char *path, t_fdf *fdf)
 	if (fd == -1)
 		manage_errors(fdf, 2, path);
 	ft_read_map_file(fdf, fd, &map_file);
-	ft_init_map(fdf->map, map_file, ft_lstsize(map_file));
-	fdf->map->min_z = INT_MAX;
-	fdf->map->max_z = INT_MIN;
+	get_map_size(fdf->map, map_file, ft_lstsize(map_file));
 	set_default_cam_parameters(fdf->cam, fdf->map);
 	generate_points(fdf, map_file, -1);
 	if (close(fd) == -1)
 		manage_errors(fdf, 3, path);
 }
 
-// Init map variables
-void	ft_init_map(t_map *map, t_list *map_file, int height)
+// Set map size
+void	get_map_size(t_map *map, t_list *map_file, int length)
 {
 	char	*line;
 	int		i;
 
 	i = 0;
-	map->length = height;
+	map->min_z = INT_MAX;
+	map->max_z = INT_MIN;
+	map->length = length;
 	map->width = 0;
 	line = (char *) map_file->content;
 	while (line[i] && line[i] != '\n')
@@ -86,8 +86,6 @@ int	**ft_populate_grid(t_fdf *fdf, t_list *map_file, int i)
 	grid = malloc(sizeof(int *) * fdf->map->length);
 	if (grid == NULL)
 	{
-		// NOTE: what to free ?
-			// check for mallocs in main
 		ft_lstclear(&map_file, &free);
 		manage_errors(fdf, 4, "map->grid");
 	}
@@ -98,7 +96,7 @@ int	**ft_populate_grid(t_fdf *fdf, t_list *map_file, int i)
 		{
 			free_grid(grid, fdf->map->length);
 			ft_lstclear(&map_file, &free);
-			manage_errors(fdf, 4, "grid[row]");
+			manage_errors(fdf, 4, "map->grid[row]");
 		}
 		j = -1;
 		line = map_file->content;
