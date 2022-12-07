@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:55:07 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/07 09:33:04 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/07 10:45:49 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	ft_parse_map(char *path, t_fdf *fdf)
 	if (close(fd) == -1)
 		manage_errors(fdf, 3, path);
 }
-
 
 // Read file content and save each line in list
 static void	ft_read_map_file(t_fdf *fdf, int fd, t_list **map_content)
