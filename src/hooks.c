@@ -6,11 +6,15 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 14:47:10 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 18:30:20 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/07 09:31:45 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static int	keyboard_hooks(int key, t_fdf *fdf);
+static int	button_hooks(t_fdf *mlx);
+static int	mouse_hooks(int key, int x, int y, t_fdf *fdf);
 
 // Link events to actions
 // Keyboard events
@@ -25,7 +29,7 @@ void	setup_mlx_hooks(t_fdf *fdf)
 
 // NOTE: define increments in header
 // Detect key press and call needed function
-int	keyboard_hooks(int key, t_fdf *fdf)
+static int	keyboard_hooks(int key, t_fdf *fdf)
 {
 	if (key == ESC)
 		exit_fdf(fdf, 0);
@@ -51,14 +55,14 @@ int	keyboard_hooks(int key, t_fdf *fdf)
 }
 
 // Frame cross click
-int	button_hooks(t_fdf *mlx)
+static int	button_hooks(t_fdf *mlx)
 {
 	exit_fdf(mlx, 0);
 	return (0);
 }
 
 // Mouse scroll
-int	mouse_hooks(int key, int x, int y, t_fdf *fdf)
+static int	mouse_hooks(int key, int x, int y, t_fdf *fdf)
 {
 	(void) x;
 	(void) y;

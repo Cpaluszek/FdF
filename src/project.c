@@ -6,12 +6,16 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 08:55:38 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 18:32:55 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/07 09:34:47 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <math.h>
+
+static void	isometric_projection(t_fdf *fdf, t_point *p);
+static void	parallel_projection(t_fdf *fdf, t_point *p);
+static void	rotate_z(t_point *p, float angle);
 
 // Project point in 3D space
 // Apply zoom, translation, rotation and projection
@@ -32,7 +36,7 @@ void	project(t_fdf *fdf, t_point *p)
 
 // TODO: adjust /50 division
 // Isometric projection
-void	isometric_projection(t_fdf *fdf, t_point *p)
+static void	isometric_projection(t_fdf *fdf, t_point *p)
 {
 	p->x = cos(0.8f) * (p->x - p->y);
 	p->y = sin(0.8f) * (p->x + p->y) \
@@ -41,7 +45,7 @@ void	isometric_projection(t_fdf *fdf, t_point *p)
 
 // TODO; try conic projection
 // Parallel projection
-void	parallel_projection(t_fdf *fdf, t_point *p)
+static void	parallel_projection(t_fdf *fdf, t_point *p)
 {
 	float	x;
 	float	y;
@@ -55,7 +59,7 @@ void	parallel_projection(t_fdf *fdf, t_point *p)
 
 // Todo: try to rotate around screen center
 // Rotation around z axis
-void	rotate_z(t_point *p, float angle)
+static void	rotate_z(t_point *p, float angle)
 {
 	float	x;
 	float	y;

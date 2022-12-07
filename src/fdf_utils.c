@@ -6,12 +6,14 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:00:44 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/07 09:09:03 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/07 09:30:52 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <math.h>
+
+static void	swap_floats(float *a, float *b);
 
 // Init camera paremeters on reset them on space bar input
 void	set_default_cam_parameters(t_camera *cam, t_map *map)
@@ -24,16 +26,6 @@ void	set_default_cam_parameters(t_camera *cam, t_map *map)
 	cam->z_mult = INITIAL_HEIGHT_MULT;
 	cam->projection = ISO;
 	set_palette_soapy(map);
-}
-
-// Swap two float value
-static void	swap_floats(float *a, float *b)
-{
-	float	temp;
-
-	temp = *a;
-	*a = *b;
-	*b = temp;
 }
 
 // Swap to point struct
@@ -49,4 +41,24 @@ void	swap_points(t_point *p1, t_point *p2)
 	temp = p1->z;
 	p1->z = p2->z;
 	p2->z = temp;
+}
+
+// Swap two float value
+static void	swap_floats(float *a, float *b)
+{
+	float	temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
+// NOTE: ?????????????????
+// Color a specific pixel on image
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }

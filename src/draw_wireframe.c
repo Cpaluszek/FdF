@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 15:51:30 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 18:30:43 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/07 09:28:35 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,9 @@
 #include "colors.h"
 #include <math.h>
 
-// Fill the image with background color
-// A second color is used for menu background
-static void	draw_background(t_fdf *fdf)
-{
-	int	*image;
-	int	i;
-
-	image = (int *)(fdf->data.addr);
-	i = 0;
-	while (i < WIN_HEIGHT * WIN_WIDTH)
-	{
-		if (i % WIN_WIDTH < MENU_WIDTH && i / WIN_WIDTH < MENU_HEIGHT)
-			image[i] = MENU_BACKGROUND;
-		else
-			image[i] = BACKGROUND;
-		i++;
-	}
-}
+static void	draw_line(t_fdf *fdf, t_point p1, t_point p2);
+static void	draw_background(t_fdf *fdf);
+static int	check_bounds(const t_point p);
 
 // Generate render
 //  - Draw background
@@ -64,7 +49,7 @@ void	draw_wireframe(t_fdf *fdf)
 
 // Bresenham algorithm to draw a line between two points
 // Create a gradient of color between two points using lerp_color()
-void	draw_line(t_fdf *fdf, t_point p1, t_point p2)
+static void	draw_line(t_fdf *fdf, t_point p1, t_point p2)
 {
 	t_point	delta;
 	float	max;
@@ -88,4 +73,34 @@ void	draw_line(t_fdf *fdf, t_point p1, t_point p2)
 		p1.x += delta.x;
 		p1.y += delta.y;
 	}
+}
+
+// Fill the image with background color
+// A second color is used for menu background
+static void	draw_background(t_fdf *fdf)
+{
+	int	*image;
+	int	i;
+
+	image = (int *)(fdf->data.addr);
+	i = 0;
+	while (i < WIN_HEIGHT * WIN_WIDTH)
+	{
+		if (i % WIN_WIDTH < MENU_WIDTH && i / WIN_WIDTH < MENU_HEIGHT)
+			image[i] = MENU_BACKGROUND;
+		else
+			image[i] = BACKGROUND;
+		i++;
+	}
+}
+
+// Check if a point is inside window bounds
+static int	check_bounds(const t_point p)
+{
+	if (p.x <= MENU_WIDTH && p.y <= MENU_HEIGHT)
+		return (0);
+	else if ((p.x <= 0 || p.y >= WIN_HEIGHT \
+		|| p.x >= WIN_WIDTH || p.y <= 0))
+		return (0);
+	return (1);
 }

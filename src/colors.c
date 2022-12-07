@@ -6,11 +6,14 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 08:53:35 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/07 08:55:52 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/07 09:26:04 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static int	lerp_light(int start, int end, double percentage);
+static void	update_points_colors(t_fdf *fdf);
 
 // Assigns color to point depending on z value
 int	get_color(int z, t_map *map)
@@ -58,32 +61,6 @@ void	pick_color_palette(int key, t_fdf *fdf)
 	draw_wireframe(fdf);
 }
 
-// Reassigns color to points with map->color[]
-void	update_points_colors(t_fdf *fdf)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < fdf->map->length)
-	{
-		j = 0;
-		while (j < fdf->map->width)
-		{
-			fdf->map->points[i][j].color
-				= get_color(fdf->map->points[i][j].z, fdf->map);
-			j++;
-		}
-		i++;
-	}
-}
-
-// Get light for color depending on point position
-static int	lerp_light(int start, int end, double percentage)
-{
-	return ((int)((1 - percentage) * start + percentage * end));
-}
-
 // Get color between two points
 // This function creates linear gradient
 int	lerp_color(t_point current, t_point start, t_point end, t_point delta)
@@ -106,4 +83,30 @@ int	lerp_color(t_point current, t_point start, t_point end, t_point delta)
 	blue = lerp_light(start.color & 0xFF,
 			end.color & 0xFF, percentage);
 	return ((red << 16) | (green << 8) | blue);
+}
+
+// Reassigns color to points with map->color[]
+static void	update_points_colors(t_fdf *fdf)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < fdf->map->length)
+	{
+		j = 0;
+		while (j < fdf->map->width)
+		{
+			fdf->map->points[i][j].color
+				= get_color(fdf->map->points[i][j].z, fdf->map);
+			j++;
+		}
+		i++;
+	}
+}
+
+// Get light for color depending on point position
+static int	lerp_light(int start, int end, double percentage)
+{
+	return ((int)((1 - percentage) * start + percentage * end));
 }

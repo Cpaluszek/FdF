@@ -6,13 +6,16 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:55:07 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/07 09:23:39 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/07 09:33:04 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <fcntl.h>
 
+static void	generate_points(t_fdf *fdf, t_list *map_file, int i);
+static void	ft_read_map_file(t_fdf *fdf, int fd, t_list **map_content);
+static int	**ft_populate_grid(t_fdf *fdf, t_list *map_file, int i);
 static int	*get_row(t_fdf *fdf, t_list *map_file);
 
 // Parse file content into map structure
@@ -34,7 +37,7 @@ void	ft_parse_map(char *path, t_fdf *fdf)
 
 
 // Read file content and save each line in list
-void	ft_read_map_file(t_fdf *fdf, int fd, t_list **map_content)
+static void	ft_read_map_file(t_fdf *fdf, int fd, t_list **map_content)
 {
 	char	*line;
 	t_list	*new;
@@ -58,7 +61,7 @@ void	ft_read_map_file(t_fdf *fdf, int fd, t_list **map_content)
 }
 
 // Generate 2D INT array with file content
-int	**ft_populate_grid(t_fdf *fdf, t_list *map_file, int i)
+static int	**ft_populate_grid(t_fdf *fdf, t_list *map_file, int i)
 {
 	int		**grid;
 
@@ -106,7 +109,7 @@ static int	*get_row(t_fdf *fdf, t_list *map_file)
 }
 
 // Generate map 2D t_point array
-void	generate_points(t_fdf *fdf, t_list *map_file, int i)
+static void	generate_points(t_fdf *fdf, t_list *map_file, int i)
 {
 	int	**grid;
 	int	j;
