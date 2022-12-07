@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:08:14 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/07 09:08:53 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/07 09:10:57 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,26 @@ t_point	new_point(int x, int y, int z, t_map *map)
 	point.z = z;
 	point.color = get_color(point.z, map);
 	return (point);
+}
+
+// Set map size
+void	get_map_size(t_map *map, t_list *map_file, int length)
+{
+	char	*line;
+	int		i;
+
+	i = 0;
+	map->min_z = INT_MAX;
+	map->max_z = INT_MIN;
+	map->length = length;
+	map->width = 0;
+	line = (char *) map_file->content;
+	while (line[i] && line[i] != '\n')
+	{
+		while (!ft_isspace(line[i]))
+			i++;
+		map->width++;
+		while (ft_isspace(line[i]))
+			i++;
+	}
 }

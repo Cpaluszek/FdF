@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:55:07 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/07 09:01:17 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/07 09:11:00 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,6 @@ void	ft_parse_map(char *path, t_fdf *fdf)
 		manage_errors(fdf, 3, path);
 }
 
-// Set map size
-void	get_map_size(t_map *map, t_list *map_file, int length)
-{
-	char	*line;
-	int		i;
-
-	i = 0;
-	map->min_z = INT_MAX;
-	map->max_z = INT_MIN;
-	map->length = length;
-	map->width = 0;
-	line = (char *) map_file->content;
-	while (line[i] && line[i] != '\n')
-	{
-		while (!ft_isspace(line[i]))
-			i++;
-		map->width++;
-		while (ft_isspace(line[i]))
-			i++;
-	}
-}
 
 // Read file content and save each line in list
 void	ft_read_map_file(t_fdf *fdf, int fd, t_list **map_content)
