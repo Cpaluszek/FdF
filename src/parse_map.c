@@ -6,12 +6,14 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:55:07 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/07 09:11:00 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/07 09:23:39 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <fcntl.h>
+
+static int	*get_row(t_fdf *fdf, t_list *map_file);
 
 // Parse file content into map structure
 void	ft_parse_map(char *path, t_fdf *fdf)
@@ -59,8 +61,6 @@ void	ft_read_map_file(t_fdf *fdf, int fd, t_list **map_content)
 int	**ft_populate_grid(t_fdf *fdf, t_list *map_file, int i)
 {
 	int		**grid;
-	int		j;
-	char	*line;
 
 	grid = malloc(sizeof(int *) * fdf->map->length);
 	if (grid == NULL)
@@ -70,27 +70,39 @@ int	**ft_populate_grid(t_fdf *fdf, t_list *map_file, int i)
 	}
 	while (++i < fdf->map->length)
 	{
-		grid[i] = malloc(sizeof(int) * fdf->map->width);
+		grid[i] = get_row(fdf, map_file);
 		if (grid[i] == NULL)
 		{
 			free_grid(grid, fdf->map->length);
 			ft_lstclear(&map_file, &free);
 			manage_errors(fdf, 4, "map->grid[row]");
 		}
-		j = -1;
-		line = map_file->content;
-		while (++j < fdf->map->width)
-		{
-			grid[i][j] = ft_atoi(line);
-			ft_check_extremums(fdf->map, grid[i][j]);
-			while (*line && !ft_isspace(*line))
-				line++;
-			while (*line && ft_isspace(*line))
-				line++;
-		}
 		map_file = map_file->next;
 	}
 	return (grid);
+}
+
+static int	*get_row(t_fdf *fdf, t_list *map_file)
+{
+	int		j;
+	int		*row;
+	char	*line;
+
+	row = malloc(sizeof(int) * fdf->map->width);
+	if (row == NULL)
+		return (NULL);
+	j = -1;
+	line = map_file->content;
+	while (++j < fdf->map->width)
+	{
+		row[j] = ft_atoi(line);
+		ft_check_extremums(fdf->map, row[j]);
+		while (*line && !ft_isspace(*line))
+			line++;
+		while (*line && ft_isspace(*line))
+			line++;
+	}
+	return (row);
 }
 
 // Generate map 2D t_point array
