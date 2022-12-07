@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 08:55:38 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/07 09:34:47 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/07 10:45:26 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,15 @@ void	project(t_fdf *fdf, t_point *p)
 	p->y += fdf->cam->shift_y;
 }
 
-// TODO: adjust /50 division
-// Isometric projection
+// Isometric projection with 60 degrees angle
 static void	isometric_projection(t_fdf *fdf, t_point *p)
 {
-	p->x = cos(0.8f) * (p->x - p->y);
-	p->y = sin(0.8f) * (p->x + p->y) \
-		- (p->z * fdf->cam->z_mult * fdf->cam->zoom / 50);
+	p->x = cos(1.047f) * (p->x - p->y);
+	p->y = sin(1.047f) * (p->x + p->y) \
+		- (p->z * fdf->cam->z_mult * fdf->cam->zoom / INITIAL_ZOOM);
 }
 
-// TODO; try conic projection
-// Parallel projection
+// Parallel projection at 45 degrees
 static void	parallel_projection(t_fdf *fdf, t_point *p)
 {
 	float	x;
@@ -52,12 +50,11 @@ static void	parallel_projection(t_fdf *fdf, t_point *p)
 
 	x = p->x;
 	y = p->y;
-	p->x = y + cos(0.8f) * x;
-	p->y = sin(0.8f) * x
-		- (p->z * fdf->cam->z_mult * fdf->cam->zoom / 50);
+	p->x = x - p->z * cos(0.7853f);
+	p->y = y - sin(0.7853f)
+		* (p->z * fdf->cam->z_mult * fdf->cam->zoom / INITIAL_ZOOM);
 }
 
-// Todo: try to rotate around screen center
 // Rotation around z axis
 static void	rotate_z(t_point *p, float angle)
 {
