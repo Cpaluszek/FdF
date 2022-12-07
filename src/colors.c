@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 08:53:35 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 18:22:02 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/07 08:55:52 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ static int	lerp_light(int start, int end, double percentage)
 {
 	return ((int)((1 - percentage) * start + percentage * end));
 }
-
 
 // Get color between two points
 // This function creates linear gradient

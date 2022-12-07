@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:51 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 18:28:03 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/07 08:55:45 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		manage_errors(&fdf, 1, argv[0]);
-	// NOTE: frees are missing in parsing
 	fdf.map = malloc(sizeof(t_map));
 	fdf.cam = malloc(sizeof(t_camera));
 	if (fdf.map == NULL)
