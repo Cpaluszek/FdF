@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 15:56:50 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 17:04:03 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/07 10:58:37 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # define BLUE	0x0000FF
 
 # define TEXT_COLOR			0xEAEAEA
-# define BACKGROUND			0x181818
-# define MENU_BACKGROUND	0x1E1E1E
+# define BACKGROUND			0x101010
+# define MENU_BACKGROUND	0x181818
 
 /*	SOAPY 10 COLOR PALETTE	*/
 # define COLOR_P0_0		0xFCFCFC

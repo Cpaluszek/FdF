@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:10:47 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 15:57:29 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/07 10:55:41 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define WIN_HEIGHT		1080
 # define WIN_WIDTH		1920
 # define MENU_WIDTH		250
-# define MENU_HEIGHT	350
+# define MENU_HEIGHT	310
 # define WIN_NAME		"fdf"
 
 enum	e_keycodes
