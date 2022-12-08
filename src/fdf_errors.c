@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:58:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/06 18:25:13 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/08 07:54:55 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,13 @@
 void	manage_errors(t_fdf *fdf, int err_no, char *text)
 {
 	if (err_no == 1)
+	{
 		ft_printf_fd(STDERR_FILENO,
-			"Usage: %s <filename> [ case_size_z z_size ]\n", text);
+			"Usage: %s <filename>\n", text);
+		exit(err_no);
+	}
 	else if (err_no == 2)
-		ft_printf_fd(STDERR_FILENO, "No file %s\n", text);
+		ft_printf_fd(STDERR_FILENO, "Unable to read file %s\n", text);
 	else if (err_no == 3)
 		ft_printf_fd(STDERR_FILENO, "Unable to close file %s\n", text);
 	else if (err_no == 4)

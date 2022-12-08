@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/27 10:07:51 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/07 11:01:38 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/08 07:54:29 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_fdf	fdf;
 
-	if (argc < 2)
+	if (argc != 2)
 		manage_errors(&fdf, 1, argv[0]);
 	fdf.map = malloc(sizeof(t_map));
 	fdf.cam = malloc(sizeof(t_camera));
@@ -37,13 +37,18 @@ int	main(int argc, char **argv)
 // Exit program and free allocations
 void	exit_fdf(t_fdf *fdf, int code)
 {
+	if (fdf->cam)
+		free(fdf->cam);
+	if (code == 2)
+	{
+		free(fdf->map);
+		exit(code);
+	}
+	if (fdf->map)
+		free_map(fdf->map);
 	if (fdf->mlx && fdf->data.img)
 		mlx_destroy_image(fdf->mlx, fdf->data.img);
 	if (fdf->mlx && fdf->win)
 		mlx_destroy_window(fdf->mlx, fdf->win);
-	if (fdf->map)
-		free_map(fdf->map);
-	if (fdf->cam)
-		free(fdf->cam);
 	exit(code);
 }
