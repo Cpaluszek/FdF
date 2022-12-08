@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:58:17 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/08 07:54:55 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/08 07:57:34 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,5 @@ void	manage_errors(t_fdf *fdf, int err_no, char *text)
 	else if (err_no == 4)
 		ft_printf_fd(STDERR_FILENO, "Allocation error: %s\n", text);
 	exit_fdf(fdf, err_no);
+
 }
