@@ -6,11 +6,12 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 09:08:14 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/07 11:01:47 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/10 08:38:45 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <limits.h>
 
 // Update map maximum and minimm
 void	check_extremums(t_map *map, int depth)

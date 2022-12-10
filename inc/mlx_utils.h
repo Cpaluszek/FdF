@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 16:10:47 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/07 10:55:41 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/10 08:52:24 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ typedef struct s_data
 	int		endian;
 }	t_data;
 
-/*	Utils	*/
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 
 #endif

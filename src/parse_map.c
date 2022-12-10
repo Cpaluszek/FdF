@@ -6,12 +6,13 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 17:55:07 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/07 11:01:47 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/10 08:38:33 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <fcntl.h>
+#include <unistd.h>
 
 static void	generate_points(t_fdf *fdf, t_list *map_file, int i);
 static void	ft_read_map_file(t_fdf *fdf, int fd, t_list **map_content);

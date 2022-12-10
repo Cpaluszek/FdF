@@ -75,7 +75,6 @@ MLX_FLAG = -lm -framework OpenGL -framework AppKit
 #########################
 # 		RULES			#
 #########################
-
 all: build_libft $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT_A) $(MLX_A) 
